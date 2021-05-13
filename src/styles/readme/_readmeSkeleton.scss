@@ -15,4 +15,17 @@
       }
     }
   }
+
+  @media screen and (max-width: $small) {
+    p {
+      .skeleton {
+        height: 10vh;
+      }
+      &:nth-child(3) {
+        .skeleton {
+          height: 20vh;
+        }
+      }
+    }
+  }
 }

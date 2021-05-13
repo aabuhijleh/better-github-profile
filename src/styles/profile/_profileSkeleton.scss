@@ -4,4 +4,21 @@
     border-radius: 50%;
     height: calc(18vw);
   }
+
+  @media screen and (max-width: $small) {
+    .avatar {
+      width: 18vw;
+      margin-right: 1.2rem;
+      height: calc(18vw);
+    }
+
+    .avatar-title-skeleton {
+      display: flex;
+    }
+
+    .title {
+      width: 50vw;
+      margin-top: 0.7rem;
+    }
+  }
 }
