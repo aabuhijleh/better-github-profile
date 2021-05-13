@@ -1,15 +1,21 @@
 import { useState, useEffect } from "react";
+import { Octokit } from "@octokit/rest";
+import { Base64 } from "js-base64";
 
 export const useGithubReadme = (username: string) => {
   const [readme, setReadme] = useState({ content: "", loading: true });
 
   useEffect(() => {
     const fetchReadme = async () => {
-      const response = await fetch(
-        `https://raw.githubusercontent.com/${username}/${username}/main/README.md`
-      );
-      const readme = await response.text();
-      setReadme({ content: readme, loading: false });
+      const octokit = new Octokit();
+      const readme = await octokit.rest.repos.getReadme({
+        owner: username,
+        repo: username,
+      });
+      setReadme({
+        content: Base64.decode(readme.data.content),
+        loading: false,
+      });
     };
     fetchReadme();
   }, [username]);
