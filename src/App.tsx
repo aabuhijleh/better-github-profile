@@ -1,7 +1,7 @@
 import React from "react";
-import { ReadmeSection } from "@/components/ReadmeSection";
+import { ReadmeSection } from "src/components/ReadmeSection";
 
-import "@/styles/app.scss";
+import "src/styles/app.scss";
 
 export const App: React.FC = () => {
   return <ReadmeSection />;
