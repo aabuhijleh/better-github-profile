@@ -1,6 +1,10 @@
+$backgroundColor: #0e1117;
+$textColor: #c9d1d9;
+$linkColor: #58a6ff;
+
 body {
-  background-color: #0e1117;
-  color: #c9d1d9;
+  background-color: $backgroundColor;
+  color: $textColor;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -14,5 +18,7 @@ code {
 }
 
 a {
-  color: #58a6ff;
+  color: $linkColor;
 }
+
+@import "./skeletonPage";

@@ -1,19 +1,30 @@
 import React from "react";
+import Skeleton, {
+  SkeletonTheme,
+  SkeletonThemeProps,
+} from "react-loading-skeleton";
 
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+interface SkeletonPageProps {
+  animationDuration?: number;
+  theme?: SkeletonThemeProps;
+}
 
-export const SkeletonPage: React.FC = () => {
-  const duration = 0.6;
+export const SkeletonPage: React.FC<SkeletonPageProps> = ({
+  animationDuration = 0.6,
+  theme = { color: "#202020", highlightColor: "#444" },
+}) => {
   return (
-    <div style={{ width: "70%" }}>
-      <SkeletonTheme color="#202020" highlightColor="#444">
+    <div className="skeleton-container">
+      <SkeletonTheme {...theme}>
         <h1>
-          <Skeleton width={"30%"} duration={duration} />
+          <Skeleton className="skeleton" duration={animationDuration} />
         </h1>
         <p>
-          <Skeleton width={"80%"} height={"20vh"} duration={duration} />
+          <Skeleton className="skeleton" duration={animationDuration} />
         </p>
-        <Skeleton width={"80%"} height={"60vh"} duration={duration} />
+        <p>
+          <Skeleton className="skeleton" duration={animationDuration} />
+        </p>
       </SkeletonTheme>
     </div>
   );

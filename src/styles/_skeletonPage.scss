@@ -1,0 +1,31 @@
+$small: 960px;
+$medium: 1264px;
+
+.skeleton-container {
+  width: 60%;
+
+  @media screen and (max-width: $medium) {
+    width: 80%;
+  }
+
+  @media screen and (max-width: $small) {
+    width: 100%;
+  }
+
+  h1 {
+    .skeleton {
+      width: 30%;
+    }
+  }
+
+  p {
+    .skeleton {
+      height: 20vh;
+    }
+    &:nth-child(3) {
+      .skeleton {
+        height: 60vh;
+      }
+    }
+  }
+}
