@@ -3,15 +3,15 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import FadeIn from "react-fade-in";
 
-interface MyReadmeProps {
-  markdown: string;
+interface MarkdownProps {
+  text: string;
 }
 
-export const MyReadme: React.FC<MyReadmeProps> = ({ markdown }) => {
+export const Markdown: React.FC<MarkdownProps> = ({ text }) => {
   return (
     <>
       <FadeIn delay={100}>
-        <ReactMarkdown rehypePlugins={[rehypeRaw]} children={markdown} />
+        <ReactMarkdown rehypePlugins={[rehypeRaw]} children={text} />
       </FadeIn>
     </>
   );
