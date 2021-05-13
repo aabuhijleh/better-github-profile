@@ -61,18 +61,14 @@ export const Profile: React.FC = () => {
                 count={data.following}
                 label="following"
               />
-              {starredCount > -1 && (
-                <>
-                  <div>
-                    <b>·</b>
-                  </div>
-                  <ProfileLink
-                    Icon={AiOutlineStar}
-                    link={`${data.html_url}?tab=stars`}
-                    count={starredCount}
-                  />
-                </>
-              )}
+              <div>
+                <b>·</b>
+              </div>
+              <ProfileLink
+                Icon={AiOutlineStar}
+                link={`${data.html_url}?tab=stars`}
+                count={starredCount}
+              />
             </p>
 
             <p className="info">
