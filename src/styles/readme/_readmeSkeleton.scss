@@ -19,11 +19,11 @@
   @media screen and (max-width: $small) {
     p {
       .skeleton {
-        height: 10vh;
+        height: 5vh;
       }
       &:nth-child(3) {
         .skeleton {
-          height: 20vh;
+          height: 15vh;
         }
       }
     }

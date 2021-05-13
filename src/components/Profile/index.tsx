@@ -32,64 +32,66 @@ export const Profile: React.FC = () => {
       {loading ? (
         <ProfileSkeleton />
       ) : (
-        <FadeIn>
-          <div className="avtar-title-container">
-            <img src={data.avatar_url} alt="GitHub avatar" />
+        <>
+          <FadeIn>
+            <div className="avtar-title-container">
+              <img src={data.avatar_url} alt="GitHub avatar" />
 
-            <div className="title-container">
-              <h2 className="title">{data.name}</h2>
-              <h3 className="subtitle">
-                <AiFillGithub className="subtitle-icon" />
-                <a href={data.html_url}>{data.login}</a>
-              </h3>
+              <div className="title-container">
+                <h2 className="title">{data.name}</h2>
+                <h3 className="subtitle">
+                  <AiFillGithub className="subtitle-icon" />
+                  <a href={data.html_url}>{data.login}</a>
+                </h3>
+              </div>
             </div>
-          </div>
 
-          <p className="bio">{data.bio}</p>
+            <p className="bio">{data.bio}</p>
 
-          <p className="links">
-            <ProfileLink
-              Icon={FiUsers}
-              link={`${data.html_url}?tab=followers`}
-              count={data.followers}
-              label="followers"
-            />
-            <div>·</div>
-            <ProfileLink
-              link={`${data.html_url}?tab=following`}
-              count={data.following}
-              label="following"
-            />
-            <div>·</div>
-            <ProfileLink
-              Icon={AiOutlineStar}
-              link={`${data.html_url}?tab=stars`}
-              count={GITHUB_STARRED_COUNT}
-            />
-          </p>
-
-          <p className="info">
-            {data.company && (
-              <ProfileInfoDetail Icon={BsBuilding} detail={data.company} />
-            )}
-            {data.location && (
-              <ProfileInfoDetail
-                Icon={TiLocationOutline}
-                detail={data.location}
+            <p className="links">
+              <ProfileLink
+                Icon={FiUsers}
+                link={`${data.html_url}?tab=followers`}
+                count={data.followers}
+                label="followers"
               />
-            )}
-            {GITHUB_EMAIL && (
-              <ProfileInfoDetail Icon={FiMail} detail={GITHUB_EMAIL} email />
-            )}
-            {data.twitter_username && (
-              <ProfileInfoDetail
-                Icon={AiFillTwitterCircle}
-                detail={data.twitter_username}
+              <div>·</div>
+              <ProfileLink
+                link={`${data.html_url}?tab=following`}
+                count={data.following}
+                label="following"
               />
-            )}
-          </p>
+              <div>·</div>
+              <ProfileLink
+                Icon={AiOutlineStar}
+                link={`${data.html_url}?tab=stars`}
+                count={GITHUB_STARRED_COUNT}
+              />
+            </p>
+
+            <p className="info">
+              {data.company && (
+                <ProfileInfoDetail Icon={BsBuilding} detail={data.company} />
+              )}
+              {data.location && (
+                <ProfileInfoDetail
+                  Icon={TiLocationOutline}
+                  detail={data.location}
+                />
+              )}
+              {GITHUB_EMAIL && (
+                <ProfileInfoDetail Icon={FiMail} detail={GITHUB_EMAIL} email />
+              )}
+              {data.twitter_username && (
+                <ProfileInfoDetail
+                  Icon={AiFillTwitterCircle}
+                  detail={data.twitter_username}
+                />
+              )}
+            </p>
+          </FadeIn>
           <hr />
-        </FadeIn>
+        </>
       )}
     </div>
   );

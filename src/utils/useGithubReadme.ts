@@ -9,7 +9,6 @@ export const useGithubReadme = (username: string) => {
         `https://raw.githubusercontent.com/${username}/${username}/main/README.md`
       );
       const readme = await response.text();
-      // await new Promise((resolve) => setTimeout(resolve, 50000));
       setReadme({ content: readme, loading: false });
     };
     fetchReadme();

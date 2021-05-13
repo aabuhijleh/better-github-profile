@@ -22,7 +22,7 @@ export const ProfileSkeleton: React.FC = () => {
       <p>
         <CustomSkeleton />
       </p>
-      <p>
+      <p className="info-skeleton">
         <CustomSkeleton />
       </p>
     </BaseSkeleton>
