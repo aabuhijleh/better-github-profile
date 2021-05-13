@@ -52,7 +52,9 @@ export const Profile: React.FC = () => {
               count={data.followers}
               label="followers"
             />
-            <div>·</div>
+            <div>
+              <b>·</b>
+            </div>
             <ProfileLink
               link={`${data.html_url}?tab=following`}
               count={data.following}
@@ -60,7 +62,9 @@ export const Profile: React.FC = () => {
             />
             {starredCount > -1 && (
               <>
-                <div>·</div>
+                <div>
+                  <b>·</b>
+                </div>
                 <ProfileLink
                   Icon={AiOutlineStar}
                   link={`${data.html_url}?tab=stars`}
@@ -81,12 +85,24 @@ export const Profile: React.FC = () => {
               />
             )}
             {data.email && (
-              <ProfileInfoDetail Icon={FiMail} detail={data.email} email />
+              <ProfileInfoDetail
+                Icon={FiMail}
+                detail={data.email}
+                href={`mailto:${data.email}`}
+              />
+            )}
+            {data.blog && (
+              <ProfileInfoDetail
+                Icon={FiMail}
+                detail={data.blog}
+                href={data.blog}
+              />
             )}
             {data.twitter_username && (
               <ProfileInfoDetail
                 Icon={AiFillTwitterCircle}
-                detail={data.twitter_username}
+                detail={`@${data.twitter_username}`}
+                href={`https://twitter.com/${data.twitter_username}`}
               />
             )}
           </p>
@@ -121,22 +137,18 @@ export const ProfileLink: React.FC<ProfileLinkProps> = ({
 interface ProfileInfoDetailProps {
   Icon: IconType;
   detail: string;
-  email?: boolean;
+  href?: string;
 }
 
 export const ProfileInfoDetail: React.FC<ProfileInfoDetailProps> = ({
   Icon,
   detail,
-  email,
+  href,
 }) => {
   return (
     <div className="info-detail">
       <Icon className="info-icon" />
-      {email ? (
-        <a href={`mailto:${detail}`}>{detail}</a>
-      ) : (
-        <span>{detail}</span>
-      )}
+      {href ? <a href={href}>{detail}</a> : <span>{detail}</span>}
     </div>
   );
 };
