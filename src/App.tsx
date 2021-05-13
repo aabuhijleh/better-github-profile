@@ -1,15 +1,10 @@
 import React from "react";
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
 import { useGetMyGitHubReadme } from "utils/useGetMyGitHubReadme";
-import FadeIn from "react-fade-in";
+import { SkeletonPage } from "components/SkeletonPage";
+import { MyReadme } from "components/MyReadme";
 
 export const App: React.FC = () => {
-  const resumeMd = useGetMyGitHubReadme();
+  const { readme, loading } = useGetMyGitHubReadme();
 
-  return (
-    <FadeIn delay={100}>
-      <ReactMarkdown rehypePlugins={[rehypeRaw]} children={resumeMd} />{" "}
-    </FadeIn>
-  );
+  return loading ? <SkeletonPage /> : <MyReadme markdown={readme} />;
 };
