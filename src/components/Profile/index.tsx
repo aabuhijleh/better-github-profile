@@ -1,10 +1,6 @@
 import React from "react";
 import { useGithubUser } from "src/utils/useGithubUser";
-import {
-  GITHUB_EMAIL,
-  GITHUB_STARRED_COUNT,
-  GITHUB_USERNAME,
-} from "src/constants";
+import { GITHUB_USERNAME } from "src/constants";
 import { ProfileSkeleton } from "src/components/Profile/ProfileSkeleton";
 import FadeIn from "react-fade-in";
 import { IconType } from "react-icons/lib";
@@ -16,9 +12,11 @@ import {
 } from "react-icons/ai";
 import { TiLocationOutline } from "react-icons/ti";
 import { FiMail, FiUsers } from "react-icons/fi";
+import { useGithubStarredCount } from "src/utils/useGithubStarredCount";
 
 export const Profile: React.FC = () => {
   const { userResponse, loading } = useGithubUser(GITHUB_USERNAME);
+  const starredCount = useGithubStarredCount(GITHUB_USERNAME);
 
   if (!loading && userResponse!.status >= 400) {
     console.error("unable to get user data", userResponse);
@@ -61,12 +59,16 @@ export const Profile: React.FC = () => {
                 count={data.following}
                 label="following"
               />
-              <div>·</div>
-              <ProfileLink
-                Icon={AiOutlineStar}
-                link={`${data.html_url}?tab=stars`}
-                count={GITHUB_STARRED_COUNT}
-              />
+              {starredCount > -1 && (
+                <>
+                  <div>·</div>
+                  <ProfileLink
+                    Icon={AiOutlineStar}
+                    link={`${data.html_url}?tab=stars`}
+                    count={starredCount}
+                  />
+                </>
+              )}
             </p>
 
             <p className="info">
@@ -79,8 +81,8 @@ export const Profile: React.FC = () => {
                   detail={data.location}
                 />
               )}
-              {GITHUB_EMAIL && (
-                <ProfileInfoDetail Icon={FiMail} detail={GITHUB_EMAIL} email />
+              {data.email && (
+                <ProfileInfoDetail Icon={FiMail} detail={data.email} email />
               )}
               {data.twitter_username && (
                 <ProfileInfoDetail
