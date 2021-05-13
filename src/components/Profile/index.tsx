@@ -33,13 +33,17 @@ export const Profile: React.FC = () => {
         <ProfileSkeleton />
       ) : (
         <FadeIn>
-          <img src={data.avatar_url} alt="GitHub avatar" />
+          <div className="avtar-title-container">
+            <img src={data.avatar_url} alt="GitHub avatar" />
 
-          <h2 className="title">{data.name}</h2>
-          <h3 className="subtitle">
-            <AiFillGithub className="subtitle-icon" />
-            <a href={data.html_url}>{data.login}</a>
-          </h3>
+            <div className="title-container">
+              <h2 className="title">{data.name}</h2>
+              <h3 className="subtitle">
+                <AiFillGithub className="subtitle-icon" />
+                <a href={data.html_url}>{data.login}</a>
+              </h3>
+            </div>
+          </div>
 
           <p className="bio">{data.bio}</p>
 
@@ -84,6 +88,7 @@ export const Profile: React.FC = () => {
               />
             )}
           </p>
+          <hr />
         </FadeIn>
       )}
     </div>

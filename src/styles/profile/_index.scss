@@ -5,10 +5,6 @@
   width: 25%;
   margin-right: 3rem;
 
-  @media screen and (max-width: $small) {
-    width: 100%;
-  }
-
   img {
     display: block;
     border-radius: 50%;
@@ -18,9 +14,9 @@
 
   .subtitle {
     margin-top: -1rem;
-    color: #8b949e;
+    color: $gray;
     a {
-      color: #8b949e;
+      color: $gray;
     }
 
     .subtitle-icon {
@@ -51,6 +47,37 @@
     color: $textColor;
     &:hover {
       color: $linkColor;
+    }
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid $borderColor;
+    display: none;
+  }
+
+  @media screen and (max-width: $small) {
+    margin-top: 1rem;
+    width: 100%;
+
+    img {
+      width: 18%;
+      margin-right: 1.2rem;
+    }
+
+    hr {
+      display: block;
+      margin-top: 2rem;
+    }
+
+    .avtar-title-container {
+      display: flex;
+    }
+
+    .title-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
   }
 }
