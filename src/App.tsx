@@ -7,7 +7,6 @@ export const App: React.FC = () => {
   return (
     <div className="app">
       <Profile />
-      <hr className="separator" />
       <Readme />
     </div>
   );

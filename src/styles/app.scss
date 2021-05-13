@@ -32,19 +32,8 @@ a {
   justify-content: center;
   flex-wrap: wrap;
 
-  .separator {
-    border: 0;
-    border-top: 1px solid $borderColor;
-    display: none;
-  }
-
   @media screen and (max-width: $small) {
     margin: 1rem;
     flex-direction: column;
-
-    .separator {
-      display: block;
-      margin-top: 2rem;
-    }
   }
 }
