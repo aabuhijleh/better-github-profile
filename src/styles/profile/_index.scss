@@ -1,0 +1,56 @@
+@import "./profileSkeleton";
+
+.profile-container {
+  margin-top: -2rem;
+  width: 25%;
+  margin-right: 3rem;
+
+  @media screen and (max-width: $small) {
+    width: 100%;
+  }
+
+  img {
+    display: block;
+    border-radius: 50%;
+    border: 2px solid #30363d;
+    width: 80%;
+  }
+
+  .subtitle {
+    margin-top: -1rem;
+    color: #8b949e;
+    a {
+      color: #8b949e;
+    }
+
+    .subtitle-icon {
+      margin-right: 0.3rem;
+    }
+  }
+
+  .links {
+    display: flex;
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
+
+    div {
+      margin-right: 0.3rem;
+    }
+  }
+
+  .info {
+    .info-detail {
+      margin-top: 0.5rem;
+      .info-icon {
+        margin-right: 0.3rem;
+      }
+    }
+  }
+
+  a {
+    color: $textColor;
+    &:hover {
+      color: $linkColor;
+    }
+  }
+}

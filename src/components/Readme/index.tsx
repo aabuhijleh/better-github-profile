@@ -7,5 +7,9 @@ import { GITHUB_USERNAME } from "src/constants";
 export const Readme: React.FC = () => {
   const { content, loading } = useGithubReadme(GITHUB_USERNAME);
 
-  return loading ? <ReadmeSkeleton /> : <Markdown text={content} />;
+  return (
+    <div className="readme-container">
+      {loading ? <ReadmeSkeleton /> : <Markdown text={content} />}
+    </div>
+  );
 };

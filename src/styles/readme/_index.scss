@@ -1,0 +1,9 @@
+@import "./readmeSkeleton";
+
+.readme-container {
+  width: 60%;
+
+  @media screen and (max-width: $small) {
+    width: 100%;
+  }
+}

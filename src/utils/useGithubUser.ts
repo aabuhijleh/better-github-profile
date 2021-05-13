@@ -12,6 +12,7 @@ export const useGithubUser = (username: string) => {
     const fetchUser = async () => {
       const octokit = new Octokit();
       const user = await octokit.rest.users.getByUsername({ username });
+      // await new Promise((resolve) => setTimeout(resolve, 50000));
       setUserData({ userResponse: user, loading: false });
     };
     fetchUser();

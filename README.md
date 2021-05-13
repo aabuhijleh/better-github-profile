@@ -1,3 +1,3 @@
 # aabuhijleh.com
 
-My personal bio website
+My GitHub themed personal bio website

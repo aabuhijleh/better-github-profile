@@ -1,8 +1,9 @@
-$backgroundColor: #0e1117;
-$textColor: #c9d1d9;
-$linkColor: #58a6ff;
+@import "./common";
+@import "./profile";
+@import "./readme";
 
 body {
+  margin: 0;
   background-color: $backgroundColor;
   color: $textColor;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -19,6 +20,20 @@ code {
 
 a {
   color: $linkColor;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
-@import "./readmeSkeleton";
+.app {
+  margin: 4rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: $small) {
+    margin: 1rem;
+    flex-direction: column;
+  }
+}

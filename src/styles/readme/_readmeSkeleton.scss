@@ -1,0 +1,18 @@
+.readme-skeleton-container {
+  h1 {
+    .skeleton {
+      width: 30%;
+    }
+  }
+
+  p {
+    .skeleton {
+      height: 20vh;
+    }
+    &:nth-child(3) {
+      .skeleton {
+        height: 50vh;
+      }
+    }
+  }
+}
