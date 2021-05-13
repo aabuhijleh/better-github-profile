@@ -1,10 +1,10 @@
 import React from "react";
-import { useGetMyGitHubReadme } from "utils/useGetMyGitHubReadme";
+import { useGithubReadme } from "utils/useGithubReadme";
 import { SkeletonPage } from "components/SkeletonPage";
 import { MyReadme } from "components/MyReadme";
 
 export const App: React.FC = () => {
-  const { readme, loading } = useGetMyGitHubReadme();
+  const { content, loading } = useGithubReadme("aabuhijleh");
 
-  return loading ? <SkeletonPage /> : <MyReadme markdown={readme} />;
+  return loading ? <SkeletonPage /> : <MyReadme markdown={content} />;
 };
