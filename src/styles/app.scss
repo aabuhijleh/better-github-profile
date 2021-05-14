@@ -33,9 +33,10 @@ a {
   margin: 0 auto;
   min-height: calc(100vh - 120px);
   margin-bottom: 20px;
+  box-sizing: border-box;
 
   @media screen and (max-width: $small) {
-    margin: 1rem;
+    padding: 1rem;
     flex-direction: column;
   }
 }
@@ -50,6 +51,7 @@ a {
   width: 95%;
   max-width: 1200px;
   margin: 0 auto;
+  box-sizing: border-box;
 
   div {
     margin-left: 4rem;
