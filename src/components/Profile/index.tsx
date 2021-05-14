@@ -46,7 +46,7 @@ export const Profile: React.FC = () => {
 
               <p className="bio">{user.bio}</p>
 
-              <p className="links">
+              <div className="links p">
                 <ProfileLink
                   Icon={FiUsers}
                   link={`${user.html_url}?tab=followers`}
@@ -69,9 +69,9 @@ export const Profile: React.FC = () => {
                   link={`${user.html_url}?tab=stars`}
                   count={starredCount}
                 />
-              </p>
+              </div>
 
-              <p className="info">
+              <div className="info p">
                 {user.company && (
                   <ProfileInfoDetail Icon={BsBuilding} detail={user.company} />
                 )}
@@ -102,7 +102,7 @@ export const Profile: React.FC = () => {
                     href={`https://twitter.com/${user.twitter_username}`}
                   />
                 )}
-              </p>
+              </div>
             </FadeIn>
           )}
           <hr />
