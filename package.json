@@ -1,5 +1,5 @@
 {
-  "name": "aabuhijleh.com",
+  "name": "github-personal-website-generator",
   "version": "1.0.2",
   "private": true,
   "dependencies": {
@@ -16,6 +16,7 @@
     "js-base64": "^3.6.0",
     "node-sass": "^6.0.0",
     "parse-link-header": "^1.0.1",
+    "query-string": "^7.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-fade-in": "^2.0.1",
