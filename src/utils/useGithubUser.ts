@@ -13,6 +13,11 @@ export const useGithubUser = (username: string) => {
     const fetchUser = async () => {
       let user = null;
       let error = "⚠️ Could not get your GitHub profile data";
+      setUserData({
+        user,
+        loading: true,
+        error: "",
+      });
       try {
         const octokit = new Octokit();
         const userResponse = await octokit.rest.users.getByUsername({

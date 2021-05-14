@@ -8,6 +8,10 @@ export const useGithubReadme = (username: string) => {
   useEffect(() => {
     const fetchReadme = async () => {
       let content = "";
+      setReadme({
+        content,
+        loading: true,
+      });
       try {
         const octokit = new Octokit();
         const readme = await octokit.rest.repos.getReadme({

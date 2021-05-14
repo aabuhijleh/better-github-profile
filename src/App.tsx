@@ -30,7 +30,6 @@ Modal.setAppElement("#root");
 
 export const App: React.FC = () => {
   const { username, setUsername } = useStore();
-  console.log("username", username);
   const [customUsername, setCustomUserName] = useState(username);
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
