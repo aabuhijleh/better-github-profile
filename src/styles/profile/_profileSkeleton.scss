@@ -2,7 +2,12 @@
   .avatar {
     width: 80%;
     border-radius: 50%;
-    height: calc(18vw);
+  }
+
+  .avatar:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
   }
 
   @media screen and (max-width: $small) {
