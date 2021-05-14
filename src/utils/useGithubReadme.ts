@@ -20,7 +20,6 @@ export const useGithubReadme = (username: string) => {
         });
         content = Base64.decode(readme.data.content);
       } catch (err) {
-        console.error("could not fetch readme", err);
         content = `### ⚠️ Could not download your profile README \n\n ### [Here's the documentation](https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/managing-your-profile-readme)`;
       }
       setReadme({

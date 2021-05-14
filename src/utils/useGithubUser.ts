@@ -29,9 +29,7 @@ export const useGithubUser = (username: string) => {
         } else {
           console.error("getByUsername response error", user);
         }
-      } catch (err) {
-        console.error("could not fetch user data", err);
-      }
+      } catch (err) {}
       setUserData({
         user,
         loading: false,
