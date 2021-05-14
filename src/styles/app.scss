@@ -30,10 +30,36 @@ a {
   display: flex;
   justify-content: center;
   max-width: 1200px;
-  margin: 4rem auto;
+  margin: 0 auto;
+  min-height: calc(100vh - 120px);
+  margin-bottom: 20px;
 
   @media screen and (max-width: $small) {
     margin: 1rem;
     flex-direction: column;
+  }
+}
+
+.footer {
+  height: 100px;
+  color: $gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid $borderColor;
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  div {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+
+  @media screen and (max-width: $verySmall) {
+    div {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
   }
 }

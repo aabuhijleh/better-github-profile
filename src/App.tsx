@@ -22,7 +22,7 @@ const modalStyles = {
     transform: "translate(-50%, -50%)",
     borderRadius: "0.5rem",
     borderWidth: 1,
-    boxShadow: "0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);",
+    boxShadow: "0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)",
   },
 };
 
@@ -42,70 +42,81 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="app">
-      <Profile />
-      <Readme />
-      <Fab
-        mainButtonStyles={{ backgroundColor: "#C2185B" }}
-        icon={<FiEdit />}
-        alwaysShowTitle={true}
-      >
-        <Action
-          style={{ backgroundColor: "#161B22" }}
-          text="change profile"
-          onClick={() => openModal()}
+    <>
+      <div className="app">
+        <Profile />
+        <Readme />
+        <Fab
+          mainButtonStyles={{ backgroundColor: "#C2185B" }}
+          icon={<FiEdit />}
+          alwaysShowTitle={true}
         >
-          <FiGithub />
-        </Action>
-      </Fab>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={modalStyles}
-        contentLabel="change profile modal"
-      >
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            closeModal();
-          }}
+          <Action
+            style={{ backgroundColor: "#161B22" }}
+            text="change profile"
+            onClick={() => openModal()}
+          >
+            <FiGithub />
+          </Action>
+        </Fab>
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={modalStyles}
+          contentLabel="change profile modal"
         >
-          <input
-            type="text"
-            value={customUsername}
-            onChange={(e) => {
-              setCustomUserName(e.target.value);
-            }}
-            style={{
-              padding: 5,
-              borderStyle: "solid",
-              borderWidth: 1,
-              borderColor: "black",
-              borderRadius: 5,
-              color: "black",
-              marginRight: "1rem",
-            }}
-          />
-          <button
-            type="submit"
-            onClick={() => setUsername(customUsername)}
-            style={{
-              padding: 5,
-              borderStyle: "solid",
-              borderWidth: 1,
-              borderColor: "#0e1117",
-              borderRadius: "0.8rem",
-              color: "white",
-              backgroundColor: "#0e1117",
-              fontWeight: "bold",
-              cursor: "pointer",
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              closeModal();
             }}
           >
-            <FiEdit style={{ marginRight: "0.2rem" }} />
-            change username
-          </button>
-        </form>
-      </Modal>
-    </div>
+            <input
+              type="text"
+              value={customUsername}
+              onChange={(e) => {
+                setCustomUserName(e.target.value);
+              }}
+              style={{
+                padding: 5,
+                borderStyle: "solid",
+                borderWidth: 1,
+                borderColor: "black",
+                borderRadius: 5,
+                color: "black",
+                marginRight: "1rem",
+              }}
+            />
+            <button
+              type="submit"
+              onClick={() => setUsername(customUsername)}
+              style={{
+                padding: 5,
+                borderStyle: "solid",
+                borderWidth: 1,
+                borderColor: "#0e1117",
+                borderRadius: "0.8rem",
+                color: "white",
+                backgroundColor: "#0e1117",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+            >
+              <FiEdit style={{ marginRight: "0.2rem" }} />
+              change username
+            </button>
+          </form>
+        </Modal>
+      </div>
+      <footer className="footer">
+        <div>© Abdurrahman Abu-Hijleh 2021</div>
+        <div>
+          Created with{" "}
+          <a href="https://github.com/aabuhijleh/github-personal-website-generator">
+            GitHub Personal Website Generator
+          </a>
+        </div>
+      </footer>
+    </>
   );
 };
