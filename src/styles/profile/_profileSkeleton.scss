@@ -38,4 +38,11 @@
       margin-top: -0.2rem;
     }
   }
+
+  @media screen and (max-width: $tiny) {
+    .avatar {
+      width: 40vw;
+      height: calc(40vw);
+    }
+  }
 }
