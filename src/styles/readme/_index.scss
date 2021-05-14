@@ -5,6 +5,7 @@
   width: 60%;
 
   @media screen and (max-width: $small) {
+    margin-top: 0;
     width: 100%;
   }
 }
