@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useGithubUser } from "src/utils/useGithubUser";
 import { ProfileSkeleton } from "src/components/Profile/ProfileSkeleton";
 import FadeIn from "react-fade-in";
@@ -18,6 +18,10 @@ export const Profile: React.FC = () => {
   const username = useStore((state) => state.username);
   const { user, loading, error } = useGithubUser(username);
   const starredCount = useGithubStarredCount(username);
+
+  useEffect(() => {
+    document.title = user?.name || "My GitHub Themed Bio";
+  }, [user?.name]);
 
   return (
     <div className="profile-container">
