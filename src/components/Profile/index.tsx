@@ -1,6 +1,5 @@
 import React from "react";
 import { useGithubUser } from "src/utils/useGithubUser";
-import { GITHUB_USERNAME } from "src/constants";
 import { ProfileSkeleton } from "src/components/Profile/ProfileSkeleton";
 import FadeIn from "react-fade-in";
 import { IconType } from "react-icons/lib";
@@ -13,10 +12,12 @@ import {
 import { TiLocationOutline } from "react-icons/ti";
 import { FiMail, FiUsers } from "react-icons/fi";
 import { useGithubStarredCount } from "src/utils/useGithubStarredCount";
+import { useStore } from "src/store";
 
 export const Profile: React.FC = () => {
-  const { user, loading, error } = useGithubUser(GITHUB_USERNAME);
-  const starredCount = useGithubStarredCount(GITHUB_USERNAME);
+  const username = useStore((state) => state.username);
+  const { user, loading, error } = useGithubUser(username);
+  const starredCount = useGithubStarredCount(username);
 
   return (
     <div className="profile-container">
