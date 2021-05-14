@@ -27,10 +27,10 @@ a {
 }
 
 .app {
-  margin: 4rem;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 4rem auto;
 
   @media screen and (max-width: $small) {
     margin: 1rem;
