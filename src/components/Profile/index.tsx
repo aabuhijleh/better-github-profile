@@ -15,15 +15,8 @@ import { FiMail, FiUsers } from "react-icons/fi";
 import { useGithubStarredCount } from "src/utils/useGithubStarredCount";
 
 export const Profile: React.FC = () => {
-  const { userResponse, loading } = useGithubUser(GITHUB_USERNAME);
+  const { user, loading, error } = useGithubUser(GITHUB_USERNAME);
   const starredCount = useGithubStarredCount(GITHUB_USERNAME);
-
-  if (!loading && userResponse!.status >= 400) {
-    console.error("unable to get user data", userResponse);
-    return <div>Error: unable to get my user data from GitHub</div>;
-  }
-
-  const data = userResponse?.data!;
 
   return (
     <div className="profile-container">
@@ -31,79 +24,82 @@ export const Profile: React.FC = () => {
         <ProfileSkeleton />
       ) : (
         <>
-          <FadeIn>
-            <div className="avtar-title-container">
-              <img src={data.avatar_url} alt="GitHub avatar" />
+          {error && <div>{error}</div>}
+          {user && (
+            <FadeIn>
+              <div className="avtar-title-container">
+                <img src={user.avatar_url} alt="GitHub avatar" />
 
-              <div className="title-container">
-                <h2 className="title">{data.name}</h2>
-                <h3 className="subtitle">
-                  <AiFillGithub className="subtitle-icon" />
-                  <a href={data.html_url}>{data.login}</a>
-                </h3>
+                <div className="title-container">
+                  <h2 className="title">{user.name}</h2>
+                  <h3 className="subtitle">
+                    <AiFillGithub className="subtitle-icon" />
+                    <a href={user.html_url}>{user.login}</a>
+                  </h3>
+                </div>
               </div>
-            </div>
 
-            <p className="bio">{data.bio}</p>
+              <p className="bio">{user.bio}</p>
 
-            <p className="links">
-              <ProfileLink
-                Icon={FiUsers}
-                link={`${data.html_url}?tab=followers`}
-                count={data.followers}
-                label="followers"
-              />
-              <div>
-                <b>·</b>
-              </div>
-              <ProfileLink
-                link={`${data.html_url}?tab=following`}
-                count={data.following}
-                label="following"
-              />
-              <div>
-                <b>·</b>
-              </div>
-              <ProfileLink
-                Icon={AiOutlineStar}
-                link={`${data.html_url}?tab=stars`}
-                count={starredCount}
-              />
-            </p>
+              <p className="links">
+                <ProfileLink
+                  Icon={FiUsers}
+                  link={`${user.html_url}?tab=followers`}
+                  count={user.followers}
+                  label="followers"
+                />
+                <div>
+                  <b>·</b>
+                </div>
+                <ProfileLink
+                  link={`${user.html_url}?tab=following`}
+                  count={user.following}
+                  label="following"
+                />
+                <div>
+                  <b>·</b>
+                </div>
+                <ProfileLink
+                  Icon={AiOutlineStar}
+                  link={`${user.html_url}?tab=stars`}
+                  count={starredCount}
+                />
+              </p>
 
-            <p className="info">
-              {data.company && (
-                <ProfileInfoDetail Icon={BsBuilding} detail={data.company} />
-              )}
-              {data.location && (
-                <ProfileInfoDetail
-                  Icon={TiLocationOutline}
-                  detail={data.location}
-                />
-              )}
-              {data.email && (
-                <ProfileInfoDetail
-                  Icon={FiMail}
-                  detail={data.email}
-                  href={`mailto:${data.email}`}
-                />
-              )}
-              {data.blog && (
-                <ProfileInfoDetail
-                  Icon={FiMail}
-                  detail={data.blog}
-                  href={data.blog}
-                />
-              )}
-              {data.twitter_username && (
-                <ProfileInfoDetail
-                  Icon={AiFillTwitterCircle}
-                  detail={`@${data.twitter_username}`}
-                  href={`https://twitter.com/${data.twitter_username}`}
-                />
-              )}
-            </p>
-          </FadeIn>
+              <p className="info">
+                {user.company && (
+                  <ProfileInfoDetail Icon={BsBuilding} detail={user.company} />
+                )}
+                {user.location && (
+                  <ProfileInfoDetail
+                    Icon={TiLocationOutline}
+                    detail={user.location}
+                  />
+                )}
+                {user.email && (
+                  <ProfileInfoDetail
+                    Icon={FiMail}
+                    detail={user.email}
+                    href={`mailto:${user.email}`}
+                  />
+                )}
+                {user.blog && (
+                  <ProfileInfoDetail
+                    Icon={FiMail}
+                    detail={user.blog}
+                    href={user.blog}
+                  />
+                )}
+                {user.twitter_username && (
+                  <ProfileInfoDetail
+                    Icon={AiFillTwitterCircle}
+                    detail={`@${user.twitter_username}`}
+                    href={`https://twitter.com/${user.twitter_username}`}
+                  />
+                )}
+              </p>
+            </FadeIn>
+          )}
           <hr />
         </>
       )}
