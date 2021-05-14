@@ -10,7 +10,7 @@ GitHub REST API is used to download your [profile README](https://docs.github.co
 
 ## Try it out
 
-By default, it uses my profile [`aabuhijleh`](https://github.com/aabuhijleh) found in `src/defauls.ts`
+By default, it uses my profile [`aabuhijleh`](https://github.com/aabuhijleh) as found in `src/defaults.ts`
 
 To use a different profile
 
@@ -19,3 +19,18 @@ To use a different profile
 ```
 
 Or use the UI provided by the website
+
+## Development
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
+
+```sh
+# install dependencies
+$ npm install
+
+# run the app in development
+$ npm start
+
+# build the app for production
+$ npm run build
+```
