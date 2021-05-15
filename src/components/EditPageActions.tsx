@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useStore } from "src/store";
 import { Fab, Action } from "react-tiny-fab";
-import { FiEdit, FiGithub } from "react-icons/fi";
+import { FiEdit, FiGithub, FiSun, FiMoon } from "react-icons/fi";
 import Modal from "react-modal";
 import "react-tiny-fab/dist/styles.css";
 
@@ -25,8 +25,8 @@ const modalStyles = {
 
 Modal.setAppElement("#root");
 
-export const ChangeUsernameButton: React.FC = () => {
-  const { username, setUsername } = useStore();
+export const EditPageActions: React.FC = () => {
+  const { username, setUsername, theme, setTheme } = useStore();
   const [customUsername, setCustomUserName] = useState(username);
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -50,6 +50,13 @@ export const ChangeUsernameButton: React.FC = () => {
           onClick={() => openModal()}
         >
           <FiGithub />
+        </Action>
+        <Action
+          style={{ backgroundColor: "#161B22" }}
+          text="toggle theme"
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+        >
+          {theme === "dark" ? <FiSun /> : <FiMoon />}
         </Action>
       </Fab>
       <Modal

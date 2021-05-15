@@ -38,8 +38,10 @@ export const Profile: React.FC = () => {
                 <div className="title-container">
                   <h2 className="title">{user.name}</h2>
                   <h3 className="subtitle">
-                    <AiFillGithub className="subtitle-icon" />
-                    <a href={user.html_url}>{user.login}</a>
+                    <a href={user.html_url}>
+                      <AiFillGithub className="subtitle-icon" />
+                      {user.login}
+                    </a>
                   </h3>
                 </div>
               </div>

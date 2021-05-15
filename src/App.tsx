@@ -1,20 +1,27 @@
 import React from "react";
 import { Footer } from "src/components/Footer";
-import { ChangeUsernameButton } from "src/components/ChangeUsernameButton";
+import { EditPageActions } from "src/components/EditPageActions";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Landing } from "src/components/Pages/Landing";
+import { useStore } from "src/store";
 import "src/styles/app.scss";
 
 export const App: React.FC = () => {
+  const theme = useStore((state) => state.theme);
+
   return (
-    <Router>
-      <Switch>
-        <Route path="/">
-          <Landing />
-        </Route>
-      </Switch>
-      <ChangeUsernameButton />
-      <Footer />
-    </Router>
+    <div className={`theme--${theme}`}>
+      <div className="base">
+        <Router>
+          <Switch>
+            <Route path="/">
+              <Landing />
+            </Route>
+          </Switch>
+          <EditPageActions />
+          <Footer />
+        </Router>
+      </div>
+    </div>
   );
 };

@@ -33,13 +33,13 @@
     }
   }
 
-  @media screen and (max-width: $verySmall) {
+  @media screen and (max-width: $smaller) {
     .title {
       margin-top: -0.2rem;
     }
   }
 
-  @media screen and (max-width: $tiny) {
+  @media screen and (max-width: $smallest) {
     .avatar {
       width: 40vw;
       height: calc(40vw);

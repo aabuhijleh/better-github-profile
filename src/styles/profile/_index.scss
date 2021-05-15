@@ -8,15 +8,25 @@
   img {
     display: block;
     border-radius: 50%;
-    border: 2px solid #30363d;
     width: 80%;
+
+    @include themed() {
+      border: 2px solid t($border);
+    }
   }
 
   .subtitle {
     margin-top: -1rem;
-    color: $gray;
-    a {
-      color: $gray;
+
+    @include themed() {
+      a {
+        color: t($text-secondary);
+
+        &:hover {
+          color: t($link);
+          text-decoration: none;
+        }
+      }
     }
 
     .subtitle-icon {
@@ -49,17 +59,22 @@
     }
   }
 
-  a {
-    color: $textColor;
-    &:hover {
-      color: $linkColor;
+  @include themed() {
+    a {
+      color: t($text);
+
+      &:hover {
+        color: t($link);
+      }
     }
   }
 
   hr {
-    border: 0;
-    border-top: 1px solid $borderColor;
     display: none;
+    border: 0;
+    @include themed() {
+      border-top: 1px solid t($border);
+    }
   }
 
   @media screen and (max-width: $small) {
@@ -87,13 +102,13 @@
     }
   }
 
-  @media screen and (max-width: $verySmall) {
+  @media screen and (max-width: $smaller) {
     img {
       width: 25%;
     }
   }
 
-  @media screen and (max-width: $tiny) {
+  @media screen and (max-width: $smallest) {
     img {
       width: 60%;
     }

@@ -1,23 +1,21 @@
 import React from "react";
-import Skeleton, {
-  SkeletonProps,
-  SkeletonTheme,
-  SkeletonThemeProps,
-} from "react-loading-skeleton";
+import Skeleton, { SkeletonProps, SkeletonTheme } from "react-loading-skeleton";
+import { useStore } from "src/store";
 
 interface BaseSkeletonProps {
   className?: string;
-  theme?: SkeletonThemeProps;
 }
 
 export const BaseSkeleton: React.FC<BaseSkeletonProps> = ({
   className,
-  theme = { color: "#202020", highlightColor: "#444" },
   children,
 }) => {
+  const theme = useStore((state) => state.theme);
+  const skeletonTheme =
+    theme === "dark" ? { color: "#202020", highlightColor: "#444" } : undefined;
   return (
     <div className={className}>
-      <SkeletonTheme {...theme}>{children}</SkeletonTheme>
+      <SkeletonTheme {...skeletonTheme}>{children}</SkeletonTheme>
     </div>
   );
 };
