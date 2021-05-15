@@ -26,18 +26,21 @@ a {
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .app {
   display: flex;
   justify-content: center;
-  max-width: 1200px;
   margin: 0 auto;
+  max-width: 1200px;
   min-height: calc(100vh - 120px);
   margin-bottom: 20px;
-  box-sizing: border-box;
 
   @media screen and (max-width: $small) {
-    padding: 1rem;
     flex-direction: column;
+    padding: 1rem;
   }
 }
 
@@ -51,7 +54,6 @@ a {
   width: 95%;
   max-width: 1200px;
   margin: 0 auto;
-  box-sizing: border-box;
 
   div {
     margin-left: 4rem;
