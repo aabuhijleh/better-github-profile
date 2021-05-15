@@ -1,6 +1,6 @@
 {
   "name": "github-personal-website-generator",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "private": true,
   "dependencies": {
     "@octokit/rest": "^18.5.3",
