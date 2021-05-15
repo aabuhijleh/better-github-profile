@@ -115,8 +115,12 @@
   }
 
   @media screen and (max-width: $smallest) {
+    .avtar-title-container {
+      display: block;
+    }
+
     .avatar {
-      width: 60%;
+      width: 40%;
     }
   }
 }

@@ -40,6 +40,14 @@
   }
 
   @media screen and (max-width: $smallest) {
+    .avatar-title-skeleton {
+      display: block;
+    }
+
+    .title {
+      width: 80vw;
+    }
+
     .avatar-skeleton {
       width: 40vw;
       height: calc(40vw);
