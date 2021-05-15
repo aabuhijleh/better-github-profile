@@ -4,6 +4,7 @@ import { FloatingActionButton } from "src/components/FloatingActionButton";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Landing } from "src/Pages/Landing";
 import { usePersistentStore } from "src/store";
+import { defaults } from "src/defaults";
 import "src/styles/app.scss";
 
 export const App: React.FC = () => {
@@ -18,8 +19,8 @@ export const App: React.FC = () => {
               <Landing />
             </Route>
           </Switch>
-          <FloatingActionButton />
-          <Footer />
+          {defaults.showFab && <FloatingActionButton />}
+          {defaults.showFooter && <Footer />}
         </Router>
       </div>
     </div>

@@ -2,8 +2,7 @@ import create from "zustand";
 import { persist } from "zustand/middleware";
 import queryString from "query-string";
 import { defaults } from "src/defaults";
-
-type colorTheme = "dark" | "light";
+import { ColorTheme } from "src/types";
 
 interface State {
   username: string;
@@ -11,8 +10,8 @@ interface State {
 }
 
 interface PersistentState {
-  theme: colorTheme;
-  setTheme: (to: colorTheme) => void;
+  theme: ColorTheme;
+  setTheme: (to: ColorTheme) => void;
 }
 
 const username = queryString.parse(document.location.search)[
@@ -27,7 +26,7 @@ export const useStore = create<State>((set) => ({
 export const usePersistentStore = create<PersistentState>(
   persist(
     (set) => ({
-      theme: "dark",
+      theme: defaults.theme,
       setTheme: (to) => set({ theme: to }),
     }),
     {

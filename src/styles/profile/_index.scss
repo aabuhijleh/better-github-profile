@@ -5,7 +5,7 @@
   width: 25%;
   margin-right: 3rem;
 
-  img {
+  .avatar {
     display: block;
     border-radius: 50%;
     width: 80%;
@@ -31,6 +31,12 @@
 
     .subtitle-icon {
       margin-right: 0.3rem;
+    }
+  }
+
+  .bio {
+    img {
+      height: 1em;
     }
   }
 
@@ -81,7 +87,7 @@
     margin-top: 1rem;
     width: 100%;
 
-    img {
+    .avatar {
       width: 18%;
       margin-right: 1.2rem;
     }
@@ -103,13 +109,13 @@
   }
 
   @media screen and (max-width: $smaller) {
-    img {
+    .avatar {
       width: 25%;
     }
   }
 
   @media screen and (max-width: $smallest) {
-    img {
+    .avatar {
       width: 60%;
     }
   }
