@@ -1,12 +1,16 @@
 # 🚀 GitHub Personal Website Generator
 
-> Use your GitHub profile data to create a personal website
+> Use your GitHub profile to create a personal website
 
 [Demo page](https://www.aabuhijleh.com/)
 
+<p align="center">
+    <img src="./images/example.png" alt="example" />
+</p>
+
 ## How it works?
 
-GitHub REST API is used to download your [profile README](https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/managing-your-profile-readme) and [user data](https://docs.github.com/en/rest/reference/users#get-a-user). That information is used to render the website with `React`
+GitHub REST API is used to download your [profile README](https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/managing-your-profile-readme) and [user data](https://docs.github.com/en/rest/reference/users#get-a-user). That information is then used to generate the website content.
 
 ## Try it out
 
@@ -19,6 +23,10 @@ To use a different profile
 ```
 
 Or use the UI provided by the website
+
+<p>
+    <img src="./images/FAB.png" alt="FAB" width="150" />
+</p>
 
 ## Development
 
