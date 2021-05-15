@@ -7,6 +7,7 @@ export interface DefaultValues {
   theme: ColorTheme;
   showFab: boolean;
   showFooter: boolean;
+  title: string;
 }
 
 export interface GithubUserData {

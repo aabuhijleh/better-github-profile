@@ -5,4 +5,5 @@ export const defaults: DefaultValues = {
   theme: "dark",
   showFab: true,
   showFooter: true,
+  title: "My GitHub Themed Bio",
 };
