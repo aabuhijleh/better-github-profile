@@ -12,6 +12,7 @@ export const useGithubReadme = (username: string) => {
         content,
         loading: true,
       });
+      await new Promise((resolve) => setTimeout(resolve, 9000000000));
       try {
         const octokit = new Octokit();
         const readme = await octokit.rest.repos.getReadme({

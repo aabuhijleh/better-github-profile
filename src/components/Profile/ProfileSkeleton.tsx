@@ -5,7 +5,7 @@ export const ProfileSkeleton: React.FC = () => {
   return (
     <BaseSkeleton className="profile-skeleton-container">
       <div className="avatar-title-skeleton">
-        <CustomSkeleton className="avatar" />
+        <CustomSkeleton className="avatar-skeleton" />
         <div className="title">
           <h2>
             <CustomSkeleton />

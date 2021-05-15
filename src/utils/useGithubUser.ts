@@ -18,6 +18,7 @@ export const useGithubUser = (username: string) => {
         loading: true,
         error: "",
       });
+      await new Promise((resolve) => setTimeout(resolve, 9000000000));
       try {
         const octokit = new Octokit();
         const userResponse = await octokit.rest.users.getByUsername({

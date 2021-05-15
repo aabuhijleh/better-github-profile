@@ -1,17 +1,17 @@
 .profile-skeleton-container {
-  .avatar {
+  .avatar-skeleton {
     width: 80%;
     border-radius: 50%;
   }
 
-  .avatar:after {
+  .avatar-skeleton:after {
     content: "";
     display: block;
     padding-bottom: 90%;
   }
 
   @media screen and (max-width: $small) {
-    .avatar {
+    .avatar-skeleton {
       width: 18vw;
       margin-right: 1.2rem;
       height: calc(18vw);
@@ -40,7 +40,7 @@
   }
 
   @media screen and (max-width: $smallest) {
-    .avatar {
+    .avatar-skeleton {
       width: 40vw;
       height: calc(40vw);
     }
