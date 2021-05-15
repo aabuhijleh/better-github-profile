@@ -63,20 +63,19 @@ a {
   height: 100px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 95%;
   max-width: 1200px;
   margin: 0 auto;
 
   div {
-    margin-left: 4rem;
-    margin-right: 4rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 
-  @media screen and (max-width: $smaller) {
-    div {
-      margin-left: 1rem;
-      margin-right: 1rem;
+  @media screen and (max-width: $small) {
+    .logo {
+      display: none;
     }
   }
 
