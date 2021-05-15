@@ -25,7 +25,7 @@ const modalStyles = {
 
 Modal.setAppElement("#root");
 
-export const EditPageActions: React.FC = () => {
+export const FloatingActionButton: React.FC = () => {
   const { username, setUsername } = useStore();
   const { theme, setTheme } = usePersistentStore();
   const [customUsername, setCustomUserName] = useState(username);
