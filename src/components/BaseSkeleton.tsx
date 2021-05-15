@@ -1,6 +1,6 @@
 import React from "react";
 import Skeleton, { SkeletonProps, SkeletonTheme } from "react-loading-skeleton";
-import { useStore } from "src/store";
+import { usePersistentStore } from "src/store";
 
 interface BaseSkeletonProps {
   className?: string;
@@ -10,7 +10,7 @@ export const BaseSkeleton: React.FC<BaseSkeletonProps> = ({
   className,
   children,
 }) => {
-  const theme = useStore((state) => state.theme);
+  const theme = usePersistentStore((state) => state.theme);
   const skeletonTheme =
     theme === "dark" ? { color: "#202020", highlightColor: "#444" } : undefined;
   return (

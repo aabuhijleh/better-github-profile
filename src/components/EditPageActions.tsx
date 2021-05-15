@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useStore } from "src/store";
+import { useStore, usePersistentStore } from "src/store";
 import { Fab, Action } from "react-tiny-fab";
 import { FiEdit, FiGithub, FiSun, FiMoon } from "react-icons/fi";
 import Modal from "react-modal";
@@ -26,7 +26,8 @@ const modalStyles = {
 Modal.setAppElement("#root");
 
 export const EditPageActions: React.FC = () => {
-  const { username, setUsername, theme, setTheme } = useStore();
+  const { username, setUsername } = useStore();
+  const { theme, setTheme } = usePersistentStore();
   const [customUsername, setCustomUserName] = useState(username);
   const [modalIsOpen, setIsOpen] = React.useState(false);
 

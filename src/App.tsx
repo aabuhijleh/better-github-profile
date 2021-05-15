@@ -3,11 +3,11 @@ import { Footer } from "src/components/Footer";
 import { EditPageActions } from "src/components/EditPageActions";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Landing } from "src/components/Pages/Landing";
-import { useStore } from "src/store";
+import { usePersistentStore } from "src/store";
 import "src/styles/app.scss";
 
 export const App: React.FC = () => {
-  const theme = useStore((state) => state.theme);
+  const theme = usePersistentStore((state) => state.theme);
 
   return (
     <div className={`theme--${theme}`}>
