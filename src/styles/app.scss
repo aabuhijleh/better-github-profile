@@ -74,4 +74,15 @@ a {
       margin-right: 1rem;
     }
   }
+
+  @media print {
+    display: none;
+  }
+}
+
+// react-tiny-fab
+.rtf--mb {
+  @media print {
+    display: none;
+  }
 }
