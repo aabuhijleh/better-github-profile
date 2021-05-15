@@ -1,4 +1,4 @@
-import { githubEmojis } from "src/assets/githubEmojis";
+import githubEmojis from "src/assets/githubEmojis.json";
 
 export const convertShortnameToUnicode = (text: string) => {
   if (!text) return "";
@@ -8,15 +8,18 @@ export const convertShortnameToUnicode = (text: string) => {
 
 const replacer = (match: string) => {
   const cleanMatch = match.replace(/:/g, "");
-  let imgPath = githubEmojis[cleanMatch];
-  let emoji = "";
-  if (imgPath) {
-    const url = new URL(imgPath);
-    const code = url.pathname.substring(
-      url.pathname.lastIndexOf("/") + 1,
-      url.pathname.lastIndexOf(".")
-    );
-    emoji = `&#x${code};`;
-  }
-  return emoji || match;
+
+  let result = match;
+  let imgPath = (githubEmojis as any)[cleanMatch];
+
+  if (!imgPath) return result;
+
+  const { pathname } = new URL(imgPath);
+  const code = pathname.substring(
+    pathname.lastIndexOf("/") + 1,
+    pathname.lastIndexOf(".")
+  );
+  result = `&#x${code};`;
+
+  return result;
 };

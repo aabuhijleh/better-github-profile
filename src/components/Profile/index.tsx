@@ -13,7 +13,7 @@ import { TiLocationOutline } from "react-icons/ti";
 import { FiMail, FiUsers } from "react-icons/fi";
 import { useGithubStarredCount } from "src/utils/useGithubStarredCount";
 import { useStore } from "src/store";
-import { convertShortnameToUnicode } from "src/utils/convertShortnameToUnicode";
+import { Emoji } from "src/components/Emoji";
 
 export const Profile: React.FC = () => {
   const username = useStore((state) => state.username);
@@ -23,10 +23,6 @@ export const Profile: React.FC = () => {
   useEffect(() => {
     document.title = user?.name || "My GitHub Themed Bio";
   }, [user?.name]);
-
-  if (user?.bio) {
-    user.bio = convertShortnameToUnicode(user.bio);
-  }
 
   return (
     <div className="profile-container">
@@ -55,10 +51,9 @@ export const Profile: React.FC = () => {
                 </div>
               </div>
 
-              <p
-                className="bio"
-                dangerouslySetInnerHTML={{ __html: user.bio }}
-              />
+              <p className="bio">
+                <Emoji text={user.bio} />
+              </p>
 
               <div className="links p">
                 <ProfileLink
