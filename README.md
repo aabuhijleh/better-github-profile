@@ -45,4 +45,6 @@ $ npm run build
 
 ## Todos 📝
 
+- Use GitHub GraphQL API instead of REST to get user status
+- Fix Styling issues
 - Add more customization options
