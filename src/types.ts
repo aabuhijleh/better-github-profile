@@ -1,4 +1,4 @@
-export type Mode = "dark" | "light";
+import { Mode } from "src/styled";
 
 export interface DefaultValues {
   username: string;

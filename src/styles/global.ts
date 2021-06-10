@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components/macro";
+import { bodyBackgroundColor, textColor } from "src/styles/theme";
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -18,8 +19,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: ${({ theme }) => theme.colors.bg};
-    color: ${({ theme }) => theme.colors.text};
+    background-color: ${bodyBackgroundColor};
+    color: ${textColor};
     font-weight: 400;
     line-height: 1.6;
     min-height: 100vh;
