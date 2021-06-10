@@ -9,6 +9,15 @@ query User($username: String!) {
     url
     login
     bioHTML
+    following(first: 1) {
+      totalCount
+    }
+    followers(first: 1) {
+      totalCount
+    }
+    starredRepositories(first: 1) {
+      totalCount
+    }
     company
     location
     email

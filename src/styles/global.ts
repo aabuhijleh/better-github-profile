@@ -19,10 +19,15 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: ${bodyBackgroundColor};
-    color: ${textColor};
-    font-weight: 400;
-    line-height: 1.6;
     min-height: 100vh;
+    font-weight: 400;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+      "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: ${textColor};
+    background-color: ${bodyBackgroundColor};
   }
 `;

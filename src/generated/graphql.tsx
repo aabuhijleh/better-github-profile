@@ -21052,6 +21052,22 @@ export type WorkflowRunPendingDeploymentRequestsArgs = {
 };
 
 
+export type ReadmeQueryVariables = Exact<{
+  username: Scalars['String'];
+}>;
+
+
+export type ReadmeQuery = (
+  { __typename?: 'Query' }
+  & { repository?: Maybe<(
+    { __typename?: 'Repository' }
+    & { object?: Maybe<(
+      { __typename?: 'Blob' }
+      & Pick<Blob, 'text'>
+    ) | { __typename?: 'Commit' } | { __typename?: 'Tag' } | { __typename?: 'Tree' }> }
+  )> }
+);
+
 export type UserQueryVariables = Exact<{
   username: Scalars['String'];
 }>;
@@ -21065,11 +21081,59 @@ export type UserQuery = (
     & { status?: Maybe<(
       { __typename?: 'UserStatus' }
       & Pick<UserStatus, 'emojiHTML' | 'message'>
-    )> }
+    )>, following: (
+      { __typename?: 'FollowingConnection' }
+      & Pick<FollowingConnection, 'totalCount'>
+    ), followers: (
+      { __typename?: 'FollowerConnection' }
+      & Pick<FollowerConnection, 'totalCount'>
+    ), starredRepositories: (
+      { __typename?: 'StarredRepositoryConnection' }
+      & Pick<StarredRepositoryConnection, 'totalCount'>
+    ) }
   )> }
 );
 
 
+export const ReadmeDocument = gql`
+    query Readme($username: String!) {
+  repository(owner: $username, name: $username) {
+    object(expression: "HEAD:README.md") {
+      ... on Blob {
+        text
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useReadmeQuery__
+ *
+ * To run a query within a React component, call `useReadmeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useReadmeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useReadmeQuery({
+ *   variables: {
+ *      username: // value for 'username'
+ *   },
+ * });
+ */
+export function useReadmeQuery(baseOptions: Apollo.QueryHookOptions<ReadmeQuery, ReadmeQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ReadmeQuery, ReadmeQueryVariables>(ReadmeDocument, options);
+      }
+export function useReadmeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ReadmeQuery, ReadmeQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ReadmeQuery, ReadmeQueryVariables>(ReadmeDocument, options);
+        }
+export type ReadmeQueryHookResult = ReturnType<typeof useReadmeQuery>;
+export type ReadmeLazyQueryHookResult = ReturnType<typeof useReadmeLazyQuery>;
+export type ReadmeQueryResult = Apollo.QueryResult<ReadmeQuery, ReadmeQueryVariables>;
 export const UserDocument = gql`
     query User($username: String!) {
   user(login: $username) {
@@ -21082,6 +21146,15 @@ export const UserDocument = gql`
     url
     login
     bioHTML
+    following(first: 1) {
+      totalCount
+    }
+    followers(first: 1) {
+      totalCount
+    }
+    starredRepositories(first: 1) {
+      totalCount
+    }
     company
     location
     email
