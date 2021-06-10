@@ -1,6 +1,6 @@
 import create from "zustand";
 import { persist } from "zustand/middleware";
-import queryString from "query-string";
+import { getUsernameFromUrl } from "src/utils/getUsernameFromUrl";
 import { defaults } from "src/defaults";
 import { Mode } from "src/types";
 
@@ -14,12 +14,8 @@ interface PersistentState {
   setMode: (to: Mode) => void;
 }
 
-const username = queryString.parse(document.location.search)[
-  "username"
-] as string;
-
 export const useStore = create<State>((set) => ({
-  username: username || defaults.username,
+  username: getUsernameFromUrl(),
   setUsername: (to) => set({ username: to }),
 }));
 
