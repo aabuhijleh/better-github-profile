@@ -8,13 +8,12 @@ export const App: React.FC = () => {
   const username = useStore((state) => state.username);
   const mode = usePersistentStore((state) => state.mode);
 
-  const test = useUserQuery({ variables: { username } });
-
-  console.log("testinnnnng", test);
+  const { data } = useUserQuery({ variables: { username } });
 
   return (
     <ThemeProvider theme={{ mode }}>
       <GlobalStyle />
+      <pre>{JSON.stringify(data?.user, null, 2)}</pre>
     </ThemeProvider>
   );
 };

@@ -1,5 +1,18 @@
 query User($username: String!) {
   user(login: $username) {
-    bio
+    avatarUrl
+    name
+    status {
+      emojiHTML
+      message
+    }
+    url
+    login
+    bioHTML
+    company
+    location
+    email
+    websiteUrl
+    twitterUsername
   }
 }

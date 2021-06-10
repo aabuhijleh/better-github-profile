@@ -21061,7 +21061,11 @@ export type UserQuery = (
   { __typename?: 'Query' }
   & { user?: Maybe<(
     { __typename?: 'User' }
-    & Pick<User, 'bio'>
+    & Pick<User, 'avatarUrl' | 'name' | 'url' | 'login' | 'bioHTML' | 'company' | 'location' | 'email' | 'websiteUrl' | 'twitterUsername'>
+    & { status?: Maybe<(
+      { __typename?: 'UserStatus' }
+      & Pick<UserStatus, 'emojiHTML' | 'message'>
+    )> }
   )> }
 );
 
@@ -21069,7 +21073,20 @@ export type UserQuery = (
 export const UserDocument = gql`
     query User($username: String!) {
   user(login: $username) {
-    bio
+    avatarUrl
+    name
+    status {
+      emojiHTML
+      message
+    }
+    url
+    login
+    bioHTML
+    company
+    location
+    email
+    websiteUrl
+    twitterUsername
   }
 }
     `;
