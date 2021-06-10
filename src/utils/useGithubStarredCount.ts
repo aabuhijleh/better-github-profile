@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import parse from "parse-link-header";
 
-// there is no straightforward way to
-// get the total number of starred repos
-// this method is the best we can do right now
+// there is no straightforward way to get
+// the total number of starred repos, this
+// method is the best we can do right now
 // see https://stackoverflow.com/a/30638428/9698583
 export const useGithubStarredCount = (username: string) => {
   const [starredCount, setStarredCount] = useState(0);
