@@ -1,7 +1,7 @@
 import create from "zustand";
 import { persist } from "zustand/middleware";
 import { getUsernameFromUrl } from "src/utils/getUsernameFromUrl";
-import { defaults } from "src/defaults";
+import { defaults } from "src/constants/defaults";
 import { Mode } from "src/styled";
 
 interface State {

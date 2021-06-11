@@ -1,5 +1,5 @@
 import queryString from "query-string";
-import { defaults } from "src/defaults";
+import { defaults } from "src/constants/defaults";
 
 export const getUsernameFromUrl = () => {
   let username = queryString.parse(document.location.search)["username"];
