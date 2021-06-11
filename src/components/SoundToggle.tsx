@@ -8,7 +8,8 @@ import useSound from "use-sound";
 import { shakeAnimation } from "src/styles/animations";
 
 const Wrapper = styled.div`
-  margin-left: 2.5rem;
+  height: 1.9rem;
+  margin-top: 3px;
   font-size: 2rem;
   line-height: 1;
   cursor: pointer;

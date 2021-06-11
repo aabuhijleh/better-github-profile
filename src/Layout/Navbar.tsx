@@ -41,6 +41,12 @@ const NavList = styled.ol`
   }
 `;
 
+const CustomizationTools = styled.div`
+  width: 9rem;
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const Navbar: React.FC = () => {
   return (
     <Nav>
@@ -59,8 +65,10 @@ export const Navbar: React.FC = () => {
           <Link href="#about">Contact</Link>
         </li>
       </NavList>
-      <ModeToggle />
-      <SoundToggle />
+      <CustomizationTools>
+        <SoundToggle />
+        <ModeToggle />
+      </CustomizationTools>
     </Nav>
   );
 };
