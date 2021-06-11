@@ -1,6 +1,11 @@
 import theme from "styled-theming";
 
-export const bodyBackgroundColor = theme("mode", {
+export const primaryColor = theme("mode", {
+  light: "#2ea043",
+  dark: "#2ea043",
+});
+
+export const bodyBgColor = theme("mode", {
   light: "#ffffff",
   dark: "#0e1117",
 });
@@ -23,4 +28,24 @@ export const linkBlueColor = theme("mode", {
 export const borderColor = theme("mode", {
   light: "#eaecef",
   dark: "#21262d",
+});
+
+export const btnPrimaryBgColor = theme("mode", {
+  light: "#238636",
+  dark: "#238636",
+});
+
+export const btnPrimaryBorderColor = theme("mode", {
+  light: "#2ea043",
+  dark: "#2ea043",
+});
+
+export const btnPrimaryHoverBgColor = theme("mode", {
+  light: "#2ea043",
+  dark: "#2ea043",
+});
+
+export const btnPrimaryHoverBorderColor = theme("mode", {
+  light: "#3fb950",
+  dark: "#3fb950",
 });

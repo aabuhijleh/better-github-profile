@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components/macro";
-import { bodyBackgroundColor, textColor } from "src/styles/theme";
+import { bodyBgColor, textColor } from "src/styles/theme";
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -28,6 +28,6 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: ${textColor};
-    background-color: ${bodyBackgroundColor};
+    background-color: ${bodyBgColor};
   }
 `;
