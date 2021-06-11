@@ -12,6 +12,8 @@ interface State {
 interface PersistentState {
   mode: Mode;
   setMode: (to: Mode) => void;
+  soundEnabled: boolean;
+  setSoundEnabled: (to: boolean) => void;
 }
 
 export const useStore = create<State>((set) => ({
@@ -24,6 +26,8 @@ export const usePersistentStore = create<PersistentState>(
     (set) => ({
       mode: defaults.mode,
       setMode: (to) => set({ mode: to }),
+      soundEnabled: defaults.soundEnabled,
+      setSoundEnabled: (to) => set({ soundEnabled: to }),
     }),
     {
       name: "persistent-storage",
