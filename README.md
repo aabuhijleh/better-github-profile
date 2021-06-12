@@ -10,23 +10,17 @@
 
 ## How it works? 🙋‍♀️
 
-GitHub REST API is used to download your [profile README](https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/managing-your-profile-readme) and [user data](https://docs.github.com/en/rest/reference/users#get-a-user). That information is then used to generate the website content.
+The [GitHub GraphQL API](https://docs.github.com/en/graphql) is used to download your [profile README](https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/managing-your-profile-readme) and other profile data. This information is used to generate the website's content.
 
 ## Try it out 🧪
 
-By default, it uses my profile [`aabuhijleh`](https://github.com/aabuhijleh) as found in `src/defaults.ts`
+By default, it uses the profile of the username set in `src/constants/defaults.ts`
 
 To use a different profile
 
 ```
 /?username={username}
 ```
-
-Or use the UI provided by the website
-
-<p>
-    <img src="https://user-images.githubusercontent.com/42934634/118388922-e2387100-b62f-11eb-91c6-fa6b6350b1b4.png" alt="FAB" width="150" />
-</p>
 
 ## Development 💻
 
@@ -48,4 +42,3 @@ $ npm run build
 - ~~Use GitHub GraphQL API instead of REST to get user status~~
 - ~~Use styled components~~
 - Add more customization options
-- Update README.md
