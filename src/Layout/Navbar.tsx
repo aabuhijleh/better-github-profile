@@ -5,6 +5,7 @@ import { Logo } from "src/components/Logo";
 import { Link } from "src/components/Link";
 import { ModeToggle } from "src/components/ModeToggle";
 import { SoundToggle } from "src/components/SoundToggle";
+import { Button } from "src/components/Button";
 
 const Nav = styled.nav`
   display: flex;
@@ -45,6 +46,10 @@ const NavList = styled.ol`
   }
 `;
 
+const ResumeButton = styled(Button)`
+  margin-right: 1rem;
+`;
+
 const CustomizationTools = styled.div`
   width: 10rem;
   display: flex;
@@ -70,6 +75,7 @@ export const Navbar: React.FC = () => {
           <Link href="#about">Contact</Link>
         </li>
       </NavList>
+      <ResumeButton href="#">Resume</ResumeButton>
       <CustomizationTools>
         <SoundToggle />
         <ModeToggle />

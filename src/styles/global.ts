@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
     --fz-xl: 2rem;
     --fz-xxl: 2.2rem;
     --fz-heading: 3.2rem;
-    --border-radius: 6px;
+    --border-radius: 4px;
     --nav-height: 10rem;
     --nav-logo-size: 4.2rem;
     --easing: cubic-bezier(0.645,0.045,0.355,1);
@@ -82,15 +82,6 @@ export const GlobalStyle = createGlobalStyle`
   *::selection {
     color: ${textColor};
     background-color: ${selectedTextBgColor};
-  }
-
-  a:link, a:visited {
-    text-decoration: none;
-    color: ${linkBlueColor};
-  }
-
-  a:hover {
-    text-decoration: underline;
   }
 
   svg {

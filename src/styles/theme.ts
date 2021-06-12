@@ -20,6 +20,11 @@ export const linkBlueColor = theme("mode", {
   dark: "#58a6ff",
 });
 
+export const linkBlueBgColor = theme("mode", {
+  light: "rgb(3, 102, 214, 0.1)",
+  dark: "rgb(88, 166, 255, 0.1)",
+});
+
 export const borderColor = theme("mode", {
   light: "#eaecef",
   dark: "#21262d",

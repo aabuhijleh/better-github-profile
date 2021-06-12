@@ -4,6 +4,7 @@ import { Markdown } from "src/components/Markdown";
 import { Warning } from "src/components/Warning";
 import { useReadmeQuery } from "src/generated/graphql";
 import { useStore } from "src/store";
+import { linkBlueColor } from "src/styles/theme";
 import styled from "styled-components/macro";
 
 const Wrapper = styled.div`
@@ -13,6 +14,18 @@ const Wrapper = styled.div`
   &.reset * {
     margin: revert;
     padding: revert;
+  }
+
+  &.reset a {
+    &:link,
+    &:visited {
+      text-decoration: none;
+      color: ${linkBlueColor};
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;
 
