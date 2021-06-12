@@ -7,7 +7,8 @@ import { Grid } from "src/components/layout/Grid";
 import { Navbar } from "src/components/layout/Navbar";
 import { About } from "src/components/sections/About";
 import { Jobs } from "src/components/sections/Jobs";
-import { Projects } from "src/components/sections/Projects";
+import { FeaturedProjects } from "src/components/sections/FeaturedProjects";
+import { OtherProjects } from "src/components/sections/OtherProjects";
 
 export const App: React.FC = () => {
   const mode = usePersistentStore((state) => state.mode);
@@ -20,7 +21,8 @@ export const App: React.FC = () => {
         <Profile />
         <About />
         <Jobs />
-        <Projects />
+        <FeaturedProjects />
+        <OtherProjects />
       </Grid>
     </ThemeProvider>
   );

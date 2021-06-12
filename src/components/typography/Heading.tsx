@@ -5,6 +5,13 @@ import {
 } from "src/styles/theme";
 import styled from "styled-components/macro";
 
+export const Heading = styled.h1`
+  font-size: clamp(2.6rem, 5vw, var(--fz-heading));
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1.1;
+`;
+
 export const HeadingSecondary = styled.h2`
   font-size: var(--fz-xxl);
   line-height: 1.5;

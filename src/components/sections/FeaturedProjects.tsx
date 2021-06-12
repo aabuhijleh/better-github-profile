@@ -130,7 +130,7 @@ const ProjectImage = styled.div`
   }
 `;
 
-export const Projects: React.FC = () => {
+export const FeaturedProjects: React.FC = () => {
   return (
     <Fade>
       <Wrapper id="projects">
