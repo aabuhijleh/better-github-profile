@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { linkBlueColor } from "src/styles/theme";
-import { Logo } from "src/components/Logo";
-import { Link } from "src/components/Link";
-import { ModeToggle } from "src/components/ModeToggle";
-import { SoundToggle } from "src/components/SoundToggle";
-import { Button } from "src/components/Button";
+import { Logo } from "src/components/misc/Logo";
+import { Link } from "src/components/ui/Link";
+import { ModeToggle } from "src/components/layout/Navbar/ModeToggle";
+import { SoundToggle } from "src/components/layout/Navbar/SoundToggle";
+import { Button } from "src/components/ui/Button";
 
 const Nav = styled.nav`
   display: flex;

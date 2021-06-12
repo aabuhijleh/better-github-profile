@@ -1,5 +1,5 @@
 import React from "react";
-import { LinkSecondary, LinkUnderline } from "src/components/Link";
+import { LinkSecondary, LinkUnderline } from "src/components/ui/Link";
 import { useUserQuery } from "src/generated/graphql";
 import { useDocumentTitle } from "src/hooks/useDocumentTitle";
 import { useStore } from "src/store";
@@ -11,7 +11,11 @@ import { GoLocation } from "react-icons/go";
 import { FaTwitter } from "react-icons/fa";
 import { BsLink45Deg } from "react-icons/bs";
 import { assignUrlPrefix } from "src/utils/assignUrlPrefix";
-import { Warning } from "src/components/Warning";
+import { Warning } from "src/components/typography/Warning";
+import {
+  HeadingSecondary,
+  HeadingTertiary,
+} from "src/components/typography/Heading";
 
 const Wrapper = styled.div`
   display: grid;
@@ -27,17 +31,7 @@ const Avatar = styled.img`
   transition: var(--transition);
 `;
 
-const HeadingSecondary = styled.h2`
-  font-size: var(--fz-xxl);
-  line-height: 1.4;
-`;
-
-const HeadingTertiary = styled.h3`
-  font-size: var(--fz-lg);
-  font-weight: 300;
-  line-height: 1;
-  color: ${textSecondayColor};
-
+const LoginSubtitle = styled(HeadingTertiary)`
   && > a {
     color: ${textSecondayColor};
   }
@@ -115,9 +109,9 @@ export const ProfileDetails: React.FC = () => {
 
         <header>
           <HeadingSecondary>{user.name}</HeadingSecondary>
-          <HeadingTertiary>
+          <LoginSubtitle>
             <LinkUnderline href={user.url}>{user.login}</LinkUnderline>
-          </HeadingTertiary>
+          </LoginSubtitle>
         </header>
 
         <Bio dangerouslySetInnerHTML={{ __html: user.bioHTML }} />

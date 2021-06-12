@@ -1,4 +1,4 @@
-import { LinkUnderline } from "src/components/Link";
+import { LinkUnderline } from "src/components/ui/Link";
 import { linkBlueColor, warningTextColor } from "src/styles/theme";
 import styled from "styled-components/macro";
 

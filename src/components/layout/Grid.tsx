@@ -12,7 +12,7 @@ export const Grid = styled.div`
     grid-column: content-start / content-end;
   }
 
-  nav {
+  & > nav {
     grid-column: full-start / full-end;
   }
 `;

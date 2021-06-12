@@ -1,7 +1,7 @@
 import React from "react";
-import { LinkUnderline } from "src/components/Link";
-import { Markdown } from "src/components/Markdown";
-import { Warning } from "src/components/Warning";
+import { LinkUnderline } from "src/components/ui/Link";
+import { Markdown } from "src/components/typography/Markdown";
+import { Warning } from "src/components/typography/Warning";
 import { useReadmeQuery } from "src/generated/graphql";
 import { useStore } from "src/store";
 import { linkBlueColor } from "src/styles/theme";
