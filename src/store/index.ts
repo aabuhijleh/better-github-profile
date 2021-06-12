@@ -7,6 +7,8 @@ import { Mode } from "src/styled";
 interface State {
   username: string;
   setUsername: (to: string) => void;
+  email: string;
+  setEmail: (to: string) => void;
 }
 
 interface PersistentState {
@@ -19,6 +21,8 @@ interface PersistentState {
 export const useStore = create<State>((set) => ({
   username: getUsernameFromUrl(),
   setUsername: (to) => set({ username: to }),
+  email: "",
+  setEmail: (to) => set({ email: to }),
 }));
 
 export const usePersistentStore = create<PersistentState>(

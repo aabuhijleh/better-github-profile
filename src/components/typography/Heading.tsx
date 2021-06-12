@@ -12,6 +12,10 @@ export const Heading = styled.h1`
   line-height: 1.1;
 `;
 
+export const HeadingXL = styled(Heading)`
+  font-size: clamp(40px, 5vw, 6rem);
+`;
+
 export const HeadingSecondary = styled.h2`
   font-size: var(--fz-xxl);
   line-height: 1.5;
@@ -54,5 +58,22 @@ export const SectionHeading = styled.h1`
     height: 1px;
     margin-left: 2rem;
     background-color: ${borderColor};
+  }
+`;
+
+export const SectionHeadingSmall = styled(SectionHeading)`
+  margin-bottom: 2rem;
+  color: ${linkBlueColor};
+  font-size: var(--fz-md);
+  font-family: var(--font-mono);
+  font-weight: 400;
+
+  &::before {
+    font-size: var(--fz-md);
+    margin-top: 0;
+  }
+
+  &::after {
+    content: none;
   }
 `;

@@ -4,6 +4,7 @@ import { linkBlueColor, linkBlueBgColor } from "src/styles/theme";
 export const Button = styled.a`
   &:link,
   &:visited {
+    display: inline-block;
     padding: 1rem 2rem;
 
     color: ${linkBlueColor};

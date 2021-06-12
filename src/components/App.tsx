@@ -9,6 +9,8 @@ import { About } from "src/components/sections/About";
 import { Jobs } from "src/components/sections/Jobs";
 import { FeaturedProjects } from "src/components/sections/FeaturedProjects";
 import { OtherProjects } from "src/components/sections/OtherProjects";
+import { Contact } from "src/components/sections/Contact";
+import { Footer } from "src/components/layout/Footer";
 
 export const App: React.FC = () => {
   const mode = usePersistentStore((state) => state.mode);
@@ -18,11 +20,16 @@ export const App: React.FC = () => {
       <GlobalStyle />
       <Grid>
         <Navbar />
+
         <Profile />
+
         <About />
         <Jobs />
         <FeaturedProjects />
         <OtherProjects />
+        <Contact />
+
+        <Footer />
       </Grid>
     </ThemeProvider>
   );

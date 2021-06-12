@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { LinkSecondary, LinkUnderline } from "src/components/ui/Link";
 import { useUserQuery } from "src/generated/graphql";
 import { useDocumentTitle } from "src/hooks/useDocumentTitle";
@@ -99,15 +99,24 @@ const DetailsWrapper = styled.ul`
 
 export const ProfileDetails: React.FC = () => {
   const username = useStore((state) => state.username);
+  const email = useStore((state) => state.email);
+  const setEmail = useStore((state) => state.setEmail);
+
   const { data, loading, error } = useUserQuery({
     variables: { username },
   });
 
   const user = data?.user;
 
+  useEffect(() => {
+    setEmail(user?.email || "");
+  }, [user?.email, email, setEmail]);
+
   useDocumentTitle(user?.name);
 
   if (user) {
+    setEmail(user.email);
+
     return (
       <Wrapper>
         <Avatar src={user.avatarUrl} alt="avatar" />
