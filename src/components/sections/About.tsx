@@ -7,9 +7,9 @@ import { Paraghraph } from "src/components/typography/Paraghraph";
 
 const Wrapper = styled.section`
   padding: 10rem 0;
+  padding-top: 20rem;
   margin: 0 auto;
   max-width: 70rem;
-  counter-reset: section 0;
 `;
 
 const TechnologiesList = styled.ul`

@@ -15,4 +15,6 @@ export const Grid = styled.div`
   & > nav {
     grid-column: full-start / full-end;
   }
+
+  counter-reset: section 0;
 `;
