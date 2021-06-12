@@ -29,6 +29,7 @@ export const GlobalStyle = createGlobalStyle`
     --hamburger-width: 3rem;
     --mode-toggle-color: #4d4d4d;
     --scrollbar-color: #4d4d4d;
+    --shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.8);
   }
 
   * {

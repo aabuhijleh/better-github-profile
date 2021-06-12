@@ -5,7 +5,7 @@ import { useDocumentTitle } from "src/hooks/useDocumentTitle";
 import { useStore } from "src/store";
 import { borderColor, textSecondayColor } from "src/styles/theme";
 import styled from "styled-components/macro";
-import { FiUsers, FiStar, FiMail } from "react-icons/fi";
+import { FiUsers, FiStar, FiMail, FiGithub } from "react-icons/fi";
 import { BiBuildings } from "react-icons/bi";
 import { GoLocation } from "react-icons/go";
 import { FaTwitter } from "react-icons/fa";
@@ -34,6 +34,11 @@ const Avatar = styled.img`
 const LoginSubtitle = styled(HeadingTertiary)`
   && > a {
     color: ${textSecondayColor};
+  }
+
+  & .github-icon {
+    font-size: var(--fz-md);
+    margin-right: 5px;
   }
 `;
 
@@ -110,7 +115,10 @@ export const ProfileDetails: React.FC = () => {
         <header>
           <HeadingSecondary>{user.name}</HeadingSecondary>
           <LoginSubtitle>
-            <LinkUnderline href={user.url}>{user.login}</LinkUnderline>
+            <LinkUnderline href={user.url}>
+              <FiGithub className="github-icon" />
+              {user.login}
+            </LinkUnderline>
           </LoginSubtitle>
         </header>
 

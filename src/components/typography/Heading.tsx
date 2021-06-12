@@ -7,7 +7,7 @@ import styled from "styled-components/macro";
 
 export const HeadingSecondary = styled.h2`
   font-size: var(--fz-xxl);
-  line-height: 1.4;
+  line-height: 1.5;
 `;
 
 export const HeadingTertiary = styled.h3`
