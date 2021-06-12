@@ -13,7 +13,7 @@ import { useStore } from "src/store";
 const Wrapper = styled.section`
   padding: 10rem 0;
   margin: 0 auto;
-  margin-bottom: 10rem;
+  margin-bottom: 3rem;
   max-width: 70rem;
 
   text-align: center;
