@@ -5,6 +5,7 @@ import { usePersistentStore } from "src/store";
 import { Profile } from "src/components/Profile";
 import { Grid } from "src/components/layout/Grid";
 import { Navbar } from "src/components/layout/Navbar";
+import { About } from "src/components/sections/About";
 
 export const App: React.FC = () => {
   const mode = usePersistentStore((state) => state.mode);
@@ -15,6 +16,7 @@ export const App: React.FC = () => {
       <Grid>
         <Navbar />
         <Profile />
+        <About />
       </Grid>
     </ThemeProvider>
   );

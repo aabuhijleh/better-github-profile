@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   padding: 2.4rem;
   border: 1px solid ${borderColor};
   border-radius: var(--border-radius);
+  min-height: 75vh;
 `;
 
 const ReadmeRepo = styled.div`

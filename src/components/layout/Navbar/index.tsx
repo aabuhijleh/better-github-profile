@@ -42,6 +42,7 @@ const NavList = styled.ol`
     margin-right: 0.5rem;
     content: "0" counter(item) ".";
     font-size: var(--fz-sm);
+    font-family: var(--font-mono);
     color: ${linkBlueColor};
   }
 `;
@@ -72,7 +73,7 @@ export const Navbar: React.FC = () => {
           <Link href="#projects">Work</Link>
         </li>
         <li>
-          <Link href="#about">Contact</Link>
+          <Link href="#contact">Contact</Link>
         </li>
       </NavList>
       <ResumeButton href="#">Resume</ResumeButton>

@@ -46,7 +46,7 @@ export const LinkUnderline = styled(Link)`
     width: 100%;
   }
 
-  &:focus {
+  &&:focus {
     color: ${linkBlueColor};
     outline: none;
   }
