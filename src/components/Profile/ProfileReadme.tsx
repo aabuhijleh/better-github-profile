@@ -1,31 +1,27 @@
 import React from "react";
-import { LinkUnderline } from "src/components/ui/Link";
-import { Markdown } from "src/components/typography/Markdown";
+import { Link, LinkUnderline } from "src/components/ui/Link";
+import { Markdown } from "src/components/misc/Markdown";
 import { Warning } from "src/components/typography/Warning";
 import { useReadmeQuery } from "src/generated/graphql";
 import { useStore } from "src/store";
-import { linkBlueColor } from "src/styles/theme";
 import styled from "styled-components/macro";
+import { borderColor, textSecondayColor } from "src/styles/theme";
 
 const Wrapper = styled.div`
-  padding: 3rem 0;
-  font-size: var(--fz-sm);
+  padding: 2.4rem;
+  border: 1px solid ${borderColor};
+  border-radius: var(--border-radius);
+`;
 
-  &.reset * {
-    margin: revert;
-    padding: revert;
-  }
+const ReadmeRepo = styled.div`
+  margin-bottom: 1.6rem;
+  font-family: var(--font-mono);
+  font-size: var(--fz-xxs);
+  font-weight: 600;
 
-  &.reset a {
-    &:link,
-    &:visited {
-      text-decoration: none;
-      color: ${linkBlueColor};
-    }
-
-    &:hover {
-      text-decoration: underline;
-    }
+  span {
+    display: inline-block;
+    color: ${textSecondayColor};
   }
 `;
 
@@ -40,6 +36,12 @@ export const ProfileReadme: React.FC = () => {
 
     return (
       <Wrapper className="reset">
+        <ReadmeRepo>
+          <Link href={`https://github.com/${username}/${username}`}>
+            {username}
+          </Link>
+          <span>/</span>README<span>.md</span>
+        </ReadmeRepo>
         <Markdown text={content} />
       </Wrapper>
     );

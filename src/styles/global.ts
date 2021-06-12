@@ -11,6 +11,8 @@ export const GlobalStyle = createGlobalStyle`
     --font-default: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
       "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
       "Helvetica Neue", sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, SF Mono, Consolas,
+      Liberation Mono, Menlo, monospace;
     --fz-xxs: 1.2rem;
     --fz-xs: 1.3rem;
     --fz-sm: 1.4rem;
@@ -22,11 +24,11 @@ export const GlobalStyle = createGlobalStyle`
     --border-radius: 4px;
     --nav-height: 10rem;
     --nav-logo-size: 4.2rem;
-    --easing: cubic-bezier(0.645,0.045,0.355,1);
-    --transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+    --easing: cubic-bezier(0.645, 0.045, 0.355, 1);
+    --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
     --hamburger-width: 3rem;
-    --mode-toggle-color: #4D4D4D;
-    --scrollbar-color: #4D4D4D;
+    --mode-toggle-color: #4d4d4d;
+    --scrollbar-color: #4d4d4d;
   }
 
   * {
@@ -56,17 +58,17 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${bodyBgColor};
 
     &::-webkit-scrollbar {
-        width: 12px;
+      width: 12px;
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: var(--scrollbar-color);
-        border: 3px solid ${bodyBgColor};
-        border-radius: 10px;
+      background-color: var(--scrollbar-color);
+      border: 3px solid ${bodyBgColor};
+      border-radius: 10px;
     }
-    
+
     &::-webkit-scrollbar-track {
-        background: ${bodyBgColor};
+      background: ${bodyBgColor};
     }
   }
 
