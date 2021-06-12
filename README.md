@@ -1,4 +1,4 @@
-# 🚀 GitHub Personal Website Generator
+# 🚀 Better GitHub Profile
 
 > Use your GitHub profile to create a personal website
 
