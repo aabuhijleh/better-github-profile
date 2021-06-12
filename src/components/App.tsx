@@ -3,8 +3,8 @@ import { ThemeProvider } from "styled-components/macro";
 import { GlobalStyle } from "src/styles/global";
 import { usePersistentStore } from "src/store";
 import { Profile } from "src/components/Profile";
-import { Grid } from "src/Layout/Grid";
-import { Navbar } from "src/Layout/Navbar";
+import { Grid } from "src/layout/Grid";
+import { Navbar } from "src/layout/Navbar";
 
 export const App: React.FC = () => {
   const mode = usePersistentStore((state) => state.mode);
