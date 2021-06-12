@@ -7,19 +7,28 @@ import disableSoundSfx from "src/assets/sounds/disable-sound.mp3";
 import useSound from "use-sound";
 import { shakeAnimation } from "src/styles/animations";
 
-const Wrapper = styled.div`
-  height: 1.9rem;
-  margin-top: 3px;
+const Wrapper = styled.button`
+  height: 2.4rem;
   font-size: 2rem;
   line-height: 1;
   cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: currentColor;
+  padding: 0 1rem;
+  transition: var(--transition);
 
   &:hover {
     filter: brightness(90%);
   }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
 `;
 
 const AnimatedIcon = styled.div<{ enableAnimation: boolean }>`
+  height: 2rem;
   ${(props) =>
     props.enableAnimation &&
     css`

@@ -12,7 +12,7 @@ const Nav = styled.nav`
   justify-content: flex-end;
 
   padding: 0 5rem;
-  font-size: var(--fz-xs);
+  font-size: var(--fz-md);
 
   ${Logo} {
     margin-right: auto;
@@ -23,7 +23,7 @@ const NavList = styled.ol`
   display: flex;
   align-items: center;
 
-  margin-right: 2rem;
+  margin-right: 1rem;
 
   list-style: none;
   counter-reset: item 0;
@@ -36,15 +36,16 @@ const NavList = styled.ol`
   ${Link}::before {
     margin-right: 0.5rem;
     content: "0" counter(item) ".";
-    font-size: var(--fz-xxs);
+    font-size: var(--fz-sm);
     color: ${linkBlueColor};
   }
 `;
 
 const CustomizationTools = styled.div`
-  width: 9rem;
+  width: 10rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const Navbar: React.FC = () => {
