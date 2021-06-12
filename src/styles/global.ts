@@ -19,13 +19,14 @@ export const GlobalStyle = createGlobalStyle`
     --fz-xl: 2rem;
     --fz-xxl: 2.2rem;
     --fz-heading: 3.2rem;
-    --border-radius: 4px;
+    --border-radius: 6px;
     --nav-height: 10rem;
     --nav-logo-size: 4.2rem;
     --easing: cubic-bezier(0.645,0.045,0.355,1);
     --transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
     --hamburger-width: 3rem;
     --mode-toggle-color: #4D4D4D;
+    --scrollbar-color: #4D4D4D;
   }
 
   * {
@@ -53,7 +54,20 @@ export const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     color: ${textColor};
     background-color: ${bodyBgColor};
-    transition: var(--transition);
+
+    &::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--scrollbar-color);
+        border: 3px solid ${bodyBgColor};
+        border-radius: 10px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: ${bodyBgColor};
+    }
   }
 
   :focus {
@@ -68,6 +82,15 @@ export const GlobalStyle = createGlobalStyle`
   *::selection {
     color: ${textColor};
     background-color: ${selectedTextBgColor};
+  }
+
+  a:link, a:visited {
+    text-decoration: none;
+    color: ${linkBlueColor};
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 
   svg {

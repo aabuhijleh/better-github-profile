@@ -14,6 +14,7 @@ import { assignUrlPrefix } from "src/utils/assignUrlPrefix";
 
 const Wrapper = styled.div`
   display: grid;
+  align-self: flex-start;
   grid-gap: 1rem;
   font-size: var(--fz-sm);
 `;
@@ -22,6 +23,7 @@ const Avatar = styled.img`
   width: 80%;
   border: 1px solid ${borderColor};
   border-radius: 50%;
+  transition: var(--transition);
 `;
 
 const HeadingSecondary = styled.h2`
@@ -187,11 +189,15 @@ export const ProfileDetails: React.FC = () => {
   }
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Wrapper>Loading...</Wrapper>;
   }
 
   if (error) {
-    return <Warning>⚠️ Could not get your GitHub profile data</Warning>;
+    return (
+      <Wrapper>
+        <Warning>⚠️ Could not get your GitHub profile data</Warning>
+      </Wrapper>
+    );
   }
 
   return null;

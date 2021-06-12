@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 
 interface MarkdownProps {
-  text: string;
+  text?: string;
 }
 
 export const Markdown: React.FC<MarkdownProps> = ({ text }) => {
