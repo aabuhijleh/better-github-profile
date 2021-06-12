@@ -11,6 +11,7 @@ import { GoLocation } from "react-icons/go";
 import { FaTwitter } from "react-icons/fa";
 import { BsLink45Deg } from "react-icons/bs";
 import { assignUrlPrefix } from "src/utils/assignUrlPrefix";
+import { Warning } from "src/components/Warning";
 
 const Wrapper = styled.div`
   display: grid;
@@ -49,6 +50,7 @@ const Bio = styled.p`
 const LinksWrapper = styled.ul`
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
 
   li {
@@ -94,10 +96,6 @@ const DetailsWrapper = styled.ul`
     margin-right: 3px;
     color: ${textSecondayColor};
   }
-`;
-
-const Warning = styled.p`
-  font-size: var(--fz-xxl);
 `;
 
 export const ProfileDetails: React.FC = () => {
@@ -195,7 +193,7 @@ export const ProfileDetails: React.FC = () => {
   if (error) {
     return (
       <Wrapper>
-        <Warning>⚠️ Could not get your GitHub profile data</Warning>
+        <Warning>⚠️ Could not get your GitHub profile</Warning>
       </Wrapper>
     );
   }

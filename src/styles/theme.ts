@@ -56,3 +56,8 @@ export const selectedTextBgColor = theme("mode", {
   light: "#1f6feb",
   dark: "#1f6feb",
 });
+
+export const warningTextColor = theme("mode", {
+  light: "#ffc107",
+  dark: "#ffc107",
+});
