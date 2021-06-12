@@ -4,8 +4,10 @@ import { ProfileDetails } from "src/components/Profile/ProfileDetails";
 import { ProfileReadme } from "src/components/Profile/ProfileReadme";
 
 const Wrapper = styled.main`
+  padding: 0 6rem;
   display: grid;
   grid-template-columns: 1fr 3fr;
+  grid-gap: 2rem;
 `;
 
 export const Profile: React.FC = () => {

@@ -61,7 +61,16 @@ export const GlobalStyle = createGlobalStyle`
     outline-offset: 3px;
   }
 
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
   *::selection {
+    color: ${textColor};
     background-color: ${selectedTextBgColor};
+  }
+
+  svg {
+    vertical-align: middle;
   }
 `;

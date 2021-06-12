@@ -33,6 +33,10 @@ const NavList = styled.ol`
     counter-increment: item 1;
   }
 
+  ${Link} {
+    padding: 1rem;
+  }
+
   ${Link}::before {
     margin-right: 0.5rem;
     content: "0" counter(item) ".";

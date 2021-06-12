@@ -21,14 +21,9 @@ const Wrapper = styled.button`
   &:hover {
     filter: brightness(90%);
   }
-
-  &:focus:not(:focus-visible) {
-    outline: none;
-  }
 `;
 
 const AnimatedIcon = styled.div<{ enableAnimation: boolean }>`
-  height: 2rem;
   ${(props) =>
     props.enableAnimation &&
     css`
