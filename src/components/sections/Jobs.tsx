@@ -11,6 +11,12 @@ const Wrapper = styled.section`
   max-width: 70rem;
 `;
 
+const JobWrapper = styled.div`
+  &:not(:last-of-type) {
+    margin-bottom: 4rem;
+  }
+`;
+
 const Company = styled.h2`
   margin-bottom: 5px;
   font-size: var(--fz-xxl);
@@ -60,31 +66,34 @@ export const Jobs: React.FC = () => {
     <Fade>
       <Wrapper id="jobs">
         <SectionHeading>Where I’ve Worked</SectionHeading>
-        <Company>
-          Software Engineer
-          <span>
-            &nbsp;@&nbsp;
-            <LinkUnderline href="https://www.al-enterprise.com/en">
-              Alcatel-Lucent Enterprise
-            </LinkUnderline>
-          </span>
-        </Company>
-        <TimePeriod>May 2018 - Present</TimePeriod>
 
-        <AccomplishmentList>
-          <li>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia
-            aut omnis corporis repellendus
-          </li>
-          <li>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia
-            aut omnis corporis repellendus
-          </li>
-          <li>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia
-            aut omnis corporis repellendus
-          </li>
-        </AccomplishmentList>
+        <JobWrapper>
+          <Company>
+            Software Engineer
+            <span>
+              &nbsp;@&nbsp;
+              <LinkUnderline href="https://www.al-enterprise.com/en">
+                Alcatel-Lucent Enterprise
+              </LinkUnderline>
+            </span>
+          </Company>
+          <TimePeriod>May 2018 - Present</TimePeriod>
+
+          <AccomplishmentList>
+            <li>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia
+              aut omnis corporis repellendus
+            </li>
+            <li>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia
+              aut omnis corporis repellendus
+            </li>
+            <li>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia
+              aut omnis corporis repellendus
+            </li>
+          </AccomplishmentList>
+        </JobWrapper>
       </Wrapper>
     </Fade>
   );
