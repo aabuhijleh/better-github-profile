@@ -30,8 +30,6 @@ export const borderColor = theme("mode", {
   dark: "#21262d",
 });
 
-// TODO: set correct light mode values
-
 export const selectedTextBgColor = theme("mode", {
   light: "#0a72e7",
   dark: "#1f6feb",
