@@ -18,7 +18,7 @@ const Nav = styled.nav`
   padding: 0 5rem;
   font-size: var(--fz-md);
 
-  ${Logo} {
+  .home {
     margin-right: auto;
   }
 `;
@@ -77,7 +77,9 @@ export const Navbar: React.FC = () => {
 
   return (
     <Nav>
-      <Logo size="var(--nav-logo-size)" />
+      <a className="home" href="/">
+        <Logo size="var(--nav-logo-size)" />
+      </a>
       <NavList>
         <li>
           <Link href="#about">About</Link>
