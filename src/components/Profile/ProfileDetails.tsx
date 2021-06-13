@@ -118,8 +118,6 @@ export const ProfileDetails: React.FC = () => {
   useDocumentTitle(user?.name);
 
   if (user) {
-    setEmail(user.email);
-
     return (
       <Fade>
         <Wrapper>

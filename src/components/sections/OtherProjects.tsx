@@ -36,7 +36,7 @@ const ProjectsGrid = styled.ul`
   list-style: none;
 `;
 
-const Project = styled.a`
+const Project = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -126,7 +126,7 @@ export const OtherProjects: React.FC = () => {
           <ProjectsGrid>
             {otherProjects.map((project, idx) => (
               <li key={idx}>
-                <Project href={project.externalUrl}>
+                <Project>
                   <header>
                     <ProjectTop>
                       <div className="folder">
