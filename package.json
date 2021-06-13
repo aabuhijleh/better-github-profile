@@ -1,6 +1,6 @@
 {
   "name": "better-github-profile",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.3.20",
