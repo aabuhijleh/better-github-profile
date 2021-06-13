@@ -147,7 +147,7 @@ export const ProfileDetails: React.FC = () => {
           </li>
           <li>
             <FiStar />
-            <DetailsLink href={`${user.url}?tab=start`}>
+            <DetailsLink href={`${user.url}?tab=stars`}>
               <span>{user.starredRepositories.totalCount}</span>
             </DetailsLink>
           </li>
