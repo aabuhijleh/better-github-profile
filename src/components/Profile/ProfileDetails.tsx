@@ -204,7 +204,7 @@ export const ProfileDetails: React.FC = () => {
     return (
       <Wrapper>
         <ContentLoader
-          height={"100%"}
+          height={500}
           width={"100%"}
           viewBox="0 0 200 500"
           backgroundColor={mode === "light" ? "#f5f5f5" : "#21262d"}
