@@ -33,11 +33,11 @@ export const borderColor = theme("mode", {
 // TODO: set correct light mode values
 
 export const selectedTextBgColor = theme("mode", {
-  light: "#1f6feb",
+  light: "#0a72e7",
   dark: "#1f6feb",
 });
 
 export const warningTextColor = theme("mode", {
-  light: "#ffc107",
+  light: "#b08800",
   dark: "#ffc107",
 });

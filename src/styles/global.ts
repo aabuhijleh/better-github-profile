@@ -83,7 +83,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   *::selection {
-    color: ${textColor};
+    color: #fff;
     background-color: ${selectedTextBgColor};
   }
 
