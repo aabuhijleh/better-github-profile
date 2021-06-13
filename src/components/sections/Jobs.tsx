@@ -46,11 +46,11 @@ const AccomplishmentList = styled.ul`
   }
 
   & > li::before {
-    margin-right: 3rem;
+    margin-right: 2rem;
     margin-top: 5px;
     content: "▹";
     color: ${linkBlueColor};
-    font-size: var(--fz-sm);
+    font-size: 1.8rem;
     line-height: 1.2rem;
   }
 `;

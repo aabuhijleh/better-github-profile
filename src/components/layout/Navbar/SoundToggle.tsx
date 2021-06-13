@@ -32,12 +32,8 @@ const AnimatedIcon = styled.div<{ enableAnimation: boolean }>`
 `;
 
 export const SoundToggle: React.FC = () => {
-  const { soundEnabled, setSoundEnabled } = usePersistentStore(
-    ({ soundEnabled, setSoundEnabled }) => ({
-      soundEnabled,
-      setSoundEnabled,
-    })
-  );
+  const soundEnabled = usePersistentStore((state) => state.soundEnabled);
+  const setSoundEnabled = usePersistentStore((state) => state.setSoundEnabled);
   const [enableAnimation, setEnableAnimation] = useState(false);
   const [playEnableSoundSfx] = useSound(enableSoundSfx);
   const [playDisableSoundSfx] = useSound(disableSoundSfx);

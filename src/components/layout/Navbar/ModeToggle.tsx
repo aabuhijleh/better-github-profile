@@ -21,6 +21,14 @@ const Wrapper = styled.div`
   .mode-toggle.react-toggle:hover .react-toggle-track {
     background-color: var(--mode-toggle-color);
   }
+
+  .mode-toggle .react-toggle-track-check {
+    left: 5px;
+  }
+
+  .mode-toggle .react-toggle-track-x {
+    right: 12px;
+  }
 `;
 
 const Icon = styled.span`
