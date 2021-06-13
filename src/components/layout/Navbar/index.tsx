@@ -6,6 +6,9 @@ import { Link } from "src/components/ui/Link";
 import { ModeToggle } from "src/components/layout/Navbar/ModeToggle";
 import { SoundToggle } from "src/components/layout/Navbar/SoundToggle";
 import { Button } from "src/components/ui/Button";
+import { useExtendedDataQuery } from "src/generated/graphql";
+import { useStore } from "src/store";
+import { parseExtendedData } from "src/utils/parseExtendedData";
 
 const Nav = styled.nav`
   display: flex;
@@ -59,6 +62,19 @@ const CustomizationTools = styled.div`
 `;
 
 export const Navbar: React.FC = () => {
+  const username = useStore((state) => state.username);
+  const { data } = useExtendedDataQuery({
+    variables: { username },
+  });
+
+  let resume = "#";
+  if (data?.repository?.object?.__typename === "Blob") {
+    const content = parseExtendedData(data?.repository.object.text as string);
+    if (content) {
+      resume = content.resume;
+    }
+  }
+
   return (
     <Nav>
       <Logo size="var(--nav-logo-size)" />
@@ -76,7 +92,7 @@ export const Navbar: React.FC = () => {
           <Link href="#contact">Contact</Link>
         </li>
       </NavList>
-      <ResumeButton href="#">Resume</ResumeButton>
+      <ResumeButton href={resume}>Resume</ResumeButton>
       <CustomizationTools>
         <SoundToggle />
         <ModeToggle />

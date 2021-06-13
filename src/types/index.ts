@@ -8,6 +8,7 @@ export interface DefaultValues {
 }
 
 export interface ExtendedData {
+  resume: string;
   about: {
     paragraphs: string[];
     skills: string[];
