@@ -1,0 +1,9 @@
+query ExtendedData($username: String!) {
+  repository(owner: $username, name: $username) {
+    object(expression: "HEAD:extend.json") {
+      ... on Blob {
+        text
+      }
+    }
+  }
+}

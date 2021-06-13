@@ -4,11 +4,12 @@ import { linkBlueColor } from "src/styles/theme";
 import styled from "styled-components/macro";
 import { Fade } from "react-awesome-reveal";
 import { Paraghraph } from "src/components/typography/Paraghraph";
-import aboutImage from "src/assets/images/laptop.jpg";
+import { useExtendedDataQuery } from "src/generated/graphql";
+import { useStore } from "src/store";
+import { parseExtendedData } from "src/utils/parseExtendedData";
 
 const Wrapper = styled.section`
   padding: 10rem 0;
-  padding-top: 20rem;
   margin: 0 auto;
   max-width: 90rem;
 `;
@@ -44,43 +45,44 @@ const TechnologiesList = styled.ul`
 `;
 
 export const About: React.FC = () => {
-  return (
-    <Fade>
-      <Wrapper id="about">
-        <SectionHeading>About Me</SectionHeading>
-        <ContentWrapper>
-          <div>
-            <Paraghraph>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Reiciendis tempora quia ea inventore id repudiandae laudantium
-              provident incidunt? Tempora commodi incidunt laboriosam molestiae
-              ducimus ipsa, praesentium facere corrupti aliquid nobis.
-            </Paraghraph>
+  const username = useStore((state) => state.username);
+  const { data } = useExtendedDataQuery({
+    variables: { username },
+  });
 
-            <Paraghraph>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae
-              nesciunt vero dolorum delectus aspernatur. Doloribus magni veniam
-              aperiam aliquid asperiores aspernatur officiis reiciendis beatae,
-              omnis sit cumque temporibus quis voluptate.
-            </Paraghraph>
+  if (data?.repository?.object?.__typename === "Blob") {
+    const content = parseExtendedData(data?.repository.object.text as string);
+    if (!content) return null;
 
-            <Paraghraph>
-              Here are a few technologies I've been working with recently:
-            </Paraghraph>
+    const { about } = content;
 
-            <TechnologiesList>
-              <li>TypeScript</li>
-              <li>Node.js</li>
-              <li>React</li>
-              <li>Electron</li>
-              <li>Styled Components</li>
-              <li>GraphQL</li>
-            </TechnologiesList>
-          </div>
+    return (
+      <Fade>
+        <Wrapper id="about">
+          <SectionHeading>About Me</SectionHeading>
+          <ContentWrapper>
+            <div>
+              {about.paragraphs.map((p, idx) => (
+                <Paraghraph key={idx}>{p}</Paraghraph>
+              ))}
 
-          <AboutImage src={aboutImage} alt="laptop & coffee" />
-        </ContentWrapper>
-      </Wrapper>
-    </Fade>
-  );
+              <Paraghraph>
+                Here are a few technologies I've been working with recently:
+              </Paraghraph>
+
+              <TechnologiesList>
+                {about.skills.map((skill, idx) => (
+                  <li key={idx}>{skill}</li>
+                ))}
+              </TechnologiesList>
+            </div>
+
+            <AboutImage src={about.imageUrl} alt="about image" />
+          </ContentWrapper>
+        </Wrapper>
+      </Fade>
+    );
+  }
+
+  return null;
 };

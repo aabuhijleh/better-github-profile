@@ -21052,6 +21052,22 @@ export type WorkflowRunPendingDeploymentRequestsArgs = {
 };
 
 
+export type ExtendedDataQueryVariables = Exact<{
+  username: Scalars['String'];
+}>;
+
+
+export type ExtendedDataQuery = (
+  { __typename?: 'Query' }
+  & { repository?: Maybe<(
+    { __typename?: 'Repository' }
+    & { object?: Maybe<(
+      { __typename?: 'Blob' }
+      & Pick<Blob, 'text'>
+    ) | { __typename?: 'Commit' } | { __typename?: 'Tag' } | { __typename?: 'Tree' }> }
+  )> }
+);
+
 export type ReadmeQueryVariables = Exact<{
   username: Scalars['String'];
 }>;
@@ -21095,6 +21111,45 @@ export type UserQuery = (
 );
 
 
+export const ExtendedDataDocument = gql`
+    query ExtendedData($username: String!) {
+  repository(owner: $username, name: $username) {
+    object(expression: "HEAD:extend.json") {
+      ... on Blob {
+        text
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useExtendedDataQuery__
+ *
+ * To run a query within a React component, call `useExtendedDataQuery` and pass it any options that fit your needs.
+ * When your component renders, `useExtendedDataQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useExtendedDataQuery({
+ *   variables: {
+ *      username: // value for 'username'
+ *   },
+ * });
+ */
+export function useExtendedDataQuery(baseOptions: Apollo.QueryHookOptions<ExtendedDataQuery, ExtendedDataQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ExtendedDataQuery, ExtendedDataQueryVariables>(ExtendedDataDocument, options);
+      }
+export function useExtendedDataLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ExtendedDataQuery, ExtendedDataQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ExtendedDataQuery, ExtendedDataQueryVariables>(ExtendedDataDocument, options);
+        }
+export type ExtendedDataQueryHookResult = ReturnType<typeof useExtendedDataQuery>;
+export type ExtendedDataLazyQueryHookResult = ReturnType<typeof useExtendedDataLazyQuery>;
+export type ExtendedDataQueryResult = Apollo.QueryResult<ExtendedDataQuery, ExtendedDataQueryVariables>;
 export const ReadmeDocument = gql`
     query Readme($username: String!) {
   repository(owner: $username, name: $username) {

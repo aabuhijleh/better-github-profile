@@ -4,6 +4,9 @@ import styled from "styled-components/macro";
 import { Fade } from "react-awesome-reveal";
 import { LinkUnderline } from "src/components/ui/Link";
 import { linkBlueColor, textSecondayColor } from "src/styles/theme";
+import { useExtendedDataQuery } from "src/generated/graphql";
+import { useStore } from "src/store";
+import { parseExtendedData } from "src/utils/parseExtendedData";
 
 const Wrapper = styled.section`
   padding: 10rem 0;
@@ -62,39 +65,48 @@ const AccomplishmentList = styled.ul`
 `;
 
 export const Jobs: React.FC = () => {
-  return (
-    <Fade>
-      <Wrapper id="jobs">
-        <SectionHeading>Where I’ve Worked</SectionHeading>
+  const username = useStore((state) => state.username);
+  const { data } = useExtendedDataQuery({
+    variables: { username },
+  });
 
-        <JobWrapper>
-          <Company>
-            Software Engineer
-            <span>
-              &nbsp;@&nbsp;
-              <LinkUnderline href="https://www.al-enterprise.com/en">
-                Alcatel-Lucent Enterprise
-              </LinkUnderline>
-            </span>
-          </Company>
-          <TimePeriod>May 2018 - Present</TimePeriod>
+  if (data?.repository?.object?.__typename === "Blob") {
+    const content = parseExtendedData(data?.repository.object.text as string);
+    if (!content) return null;
 
-          <AccomplishmentList>
-            <li>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia
-              aut omnis corporis repellendus
-            </li>
-            <li>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia
-              aut omnis corporis repellendus
-            </li>
-            <li>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia
-              aut omnis corporis repellendus
-            </li>
-          </AccomplishmentList>
-        </JobWrapper>
-      </Wrapper>
-    </Fade>
-  );
+    const { jobs } = content;
+
+    return (
+      <Fade>
+        <Wrapper id="jobs">
+          <SectionHeading>Where I’ve Worked</SectionHeading>
+
+          {jobs.map((job, idx) => (
+            <JobWrapper key={idx}>
+              <Company>
+                {job.title}
+                <span>
+                  &nbsp;@&nbsp;
+                  <LinkUnderline href={job.companyUrl}>
+                    {job.company}
+                  </LinkUnderline>
+                </span>
+              </Company>
+              <TimePeriod>
+                {job.date.from} - {job.date.to}
+              </TimePeriod>
+
+              <AccomplishmentList>
+                {job.accomplishments.map((accomplishment, idx) => (
+                  <li key={idx}>{accomplishment}</li>
+                ))}
+              </AccomplishmentList>
+            </JobWrapper>
+          ))}
+        </Wrapper>
+      </Fade>
+    );
+  }
+
+  return null;
 };

@@ -5,6 +5,7 @@ import { ProfileReadme } from "src/components/Profile/ProfileReadme";
 
 const Wrapper = styled.main`
   padding: 0 6rem;
+  padding-bottom: 10rem;
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-gap: 3rem;

@@ -9,6 +9,8 @@ import { Paraghraph } from "src/components/typography/Paraghraph";
 import { textSecondayColor } from "src/styles/theme";
 import { Button } from "src/components/ui/Button";
 import { useStore } from "src/store";
+import { useExtendedDataQuery } from "src/generated/graphql";
+import { parseExtendedData } from "src/utils/parseExtendedData";
 
 const Wrapper = styled.section`
   padding: 10rem 0;
@@ -42,20 +44,28 @@ const Wrapper = styled.section`
 
 export const Contact: React.FC = () => {
   const email = useStore((state) => state.email);
+  const username = useStore((state) => state.username);
+  const { data } = useExtendedDataQuery({
+    variables: { username },
+  });
 
-  return (
-    <Fade>
-      <Wrapper id="contact">
-        <SectionHeadingSmall>What’s Next?</SectionHeadingSmall>
-        <HeadingXL>Get In Touch</HeadingXL>
-        <Paraghraph>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores,
-          necessitatibus. Alias, explicabo soluta sit tempore vel ducimus
-          corrupti nisi eveniet possimus libero aut eos odit? Recusandae minus
-          molestiae enim corrupti.
-        </Paraghraph>
-        <Button href={`mailto:${email}`}>Say Hello</Button>
-      </Wrapper>
-    </Fade>
-  );
+  if (data?.repository?.object?.__typename === "Blob") {
+    const content = parseExtendedData(data?.repository.object.text as string);
+    if (!content) return null;
+
+    const { contactMessage } = content;
+
+    return (
+      <Fade>
+        <Wrapper id="contact">
+          <SectionHeadingSmall>What’s Next?</SectionHeadingSmall>
+          <HeadingXL>Get In Touch</HeadingXL>
+          <Paraghraph>{contactMessage}</Paraghraph>
+          <Button href={`mailto:${email}`}>Say Hello</Button>
+        </Wrapper>
+      </Fade>
+    );
+  }
+
+  return null;
 };

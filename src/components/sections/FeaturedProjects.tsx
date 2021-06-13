@@ -5,8 +5,9 @@ import { Fade } from "react-awesome-reveal";
 import { Link } from "src/components/ui/Link";
 import { FiExternalLink, FiGithub } from "react-icons/fi";
 import { borderColor, linkBlueColor } from "src/styles/theme";
-import project1Image from "src/assets/images/project1.png";
-import project2Image from "src/assets/images/project2.png";
+import { useExtendedDataQuery } from "src/generated/graphql";
+import { useStore } from "src/store";
+import { parseExtendedData } from "src/utils/parseExtendedData";
 
 const Wrapper = styled.section`
   padding: 10rem 0;
@@ -131,65 +132,57 @@ const ProjectImage = styled.div`
 `;
 
 export const FeaturedProjects: React.FC = () => {
-  return (
-    <Fade>
-      <Wrapper id="projects">
-        <SectionHeading>Some Things I’ve Built</SectionHeading>
-        <ProjectsList>
-          <li>
-            <ProjectContent className="project-content">
-              <ProjectOverline>Featured Project</ProjectOverline>
-              <ProjectTitle>Rainbow For Desktop</ProjectTitle>
-              <ProjectDescription>
-                A cross-platform desktop application for Rainbow which is a user
-                friendly new WebRTC-based real time communication platform
-              </ProjectDescription>
-              <ProjectTechList className="project-tech-list">
-                <li>Electron</li>
-                <li>Node.js</li>
-                <li>C++</li>
-              </ProjectTechList>
-              <ProjectLinks className="project-links">
-                <Link href="https://web.openrainbow.com">
-                  <FiExternalLink />
-                </Link>
-              </ProjectLinks>
-            </ProjectContent>
+  const username = useStore((state) => state.username);
+  const { data } = useExtendedDataQuery({
+    variables: { username },
+  });
 
-            <ProjectImage className="project-image">
-              <img src={project1Image} alt="Rainbow For Desktop" />
-            </ProjectImage>
-          </li>
+  if (data?.repository?.object?.__typename === "Blob") {
+    const content = parseExtendedData(data?.repository.object.text as string);
+    if (!content) return null;
 
-          <li>
-            <ProjectContent className="project-content">
-              <ProjectOverline>Featured Project</ProjectOverline>
-              <ProjectTitle>Better GitHub Profile</ProjectTitle>
-              <ProjectDescription>
-                Generates a nice looking website using your GitHub profile data.
-                It's the tool I'm using right now to generate this website
-              </ProjectDescription>
-              <ProjectTechList className="project-tech-list">
-                <li>React</li>
-                <li>Styled Components</li>
-                <li>GitHub GraphQL API</li>
-              </ProjectTechList>
-              <ProjectLinks className="project-links">
-                <Link href="https://github.com/aabuhijleh/better-github-profile">
-                  <FiGithub />
-                </Link>
-                <Link href="https://aabuhijleh.com">
-                  <FiExternalLink />
-                </Link>
-              </ProjectLinks>
-            </ProjectContent>
+    const { featuredProjects } = content;
 
-            <ProjectImage className="project-image">
-              <img src={project2Image} alt="Better GitHub Profile" />
-            </ProjectImage>
-          </li>
-        </ProjectsList>
-      </Wrapper>
-    </Fade>
-  );
+    return (
+      <Fade>
+        <Wrapper id="projects">
+          <SectionHeading>Some Things I’ve Built</SectionHeading>
+          <ProjectsList>
+            {featuredProjects.map((project, idx) => (
+              <li key={idx}>
+                <ProjectContent className="project-content">
+                  <ProjectOverline>Featured Project</ProjectOverline>
+                  <ProjectTitle>{project.name}</ProjectTitle>
+                  <ProjectDescription>{project.description}</ProjectDescription>
+                  <ProjectTechList className="project-tech-list">
+                    {project.technologies.map((technology, idx) => (
+                      <li key={idx}>{technology}</li>
+                    ))}
+                  </ProjectTechList>
+                  <ProjectLinks className="project-links">
+                    {project.repoUrl && (
+                      <Link href={project.repoUrl}>
+                        <FiGithub />
+                      </Link>
+                    )}
+                    {project.externalUrl && (
+                      <Link href={project.externalUrl}>
+                        <FiExternalLink />
+                      </Link>
+                    )}
+                  </ProjectLinks>
+                </ProjectContent>
+
+                <ProjectImage className="project-image">
+                  <img src={project.imageUrl} alt={project.name} />
+                </ProjectImage>
+              </li>
+            ))}
+          </ProjectsList>
+        </Wrapper>
+      </Fade>
+    );
+  }
+
+  return null;
 };
