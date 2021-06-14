@@ -18,6 +18,7 @@
     "react-scripts": "4.0.3",
     "react-toggle": "^4.1.2",
     "rehype-raw": "^5.1.0",
+    "skeleton-screen-css": "^1.0.1",
     "styled-components": "^5.3.0",
     "styled-theming": "^2.2.0",
     "use-sound": "^4.0.0",

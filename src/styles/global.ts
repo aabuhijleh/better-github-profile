@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components/macro";
+import { createGlobalStyle, css } from "styled-components/macro";
 import {
   bodyBgColor,
   linkBlueColor,
@@ -90,4 +90,28 @@ export const GlobalStyle = createGlobalStyle`
   svg {
     vertical-align: middle;
   }
+
+  // skeleton styling in dark mode
+  ${(p) =>
+    p.theme.mode === "dark" &&
+    css`
+      .ssc-circle,
+      .ssc-head-line,
+      .ssc-line,
+      .ssc-square {
+        background-color: rgba(170, 170, 170, 0.17);
+      }
+
+      .ssc-circle::after,
+      .ssc-head-line::after,
+      .ssc-line::after,
+      .ssc-square::after {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          hsla(0, 0%, 100%, 0.1),
+          transparent
+        );
+      }
+    `}
 `;

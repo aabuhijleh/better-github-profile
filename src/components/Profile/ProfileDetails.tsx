@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { LinkSecondary, LinkUnderline } from "src/components/ui/Link";
 import { useUserQuery } from "src/generated/graphql";
 import { useDocumentTitle } from "src/hooks/useDocumentTitle";
-import { usePersistentStore, useStore } from "src/store";
+import { useStore } from "src/store";
 import { borderColor, textSecondayColor } from "src/styles/theme";
 import styled from "styled-components/macro";
 import { FiUsers, FiStar, FiMail, FiGithub } from "react-icons/fi";
@@ -16,8 +16,8 @@ import {
   HeadingSecondary,
   HeadingTertiary,
 } from "src/components/typography/Heading";
-import ContentLoader from "react-content-loader";
 import { Fade } from "react-awesome-reveal";
+import "skeleton-screen-css";
 
 const Wrapper = styled.div`
   display: grid;
@@ -103,7 +103,6 @@ export const ProfileDetails: React.FC = () => {
   const username = useStore((state) => state.username);
   const email = useStore((state) => state.email);
   const setEmail = useStore((state) => state.setEmail);
-  const mode = usePersistentStore((state) => state.mode);
 
   const { data, loading, error } = useUserQuery({
     variables: { username },
@@ -203,26 +202,19 @@ export const ProfileDetails: React.FC = () => {
   if (loading) {
     return (
       <Wrapper>
-        <ContentLoader
-          height={500}
-          width={"100%"}
-          viewBox="0 0 200 500"
-          backgroundColor={mode === "light" ? "#f5f5f5" : "#21262d"}
-          foregroundColor={mode === "light" ? "#dbdbdb" : "#181c25"}
-        >
-          <circle cx="80" cy="80" r="80" />
-          <rect x="5" y="170" rx="3" ry="3" width="130" height="15" />
-          <rect x="5" y="190" rx="3" ry="3" width="80" height="10" />
-          <rect x="5" y="210" rx="3" ry="3" width="70" height="10" />
-          <rect x="5" y="230" rx="3" ry="3" width="115" height="15" />
-          <rect x="5" y="250" rx="3" ry="3" width="35" height="8" />
-          <rect x="45" y="250" rx="3" ry="3" width="35" height="8" />
-          <rect x="85" y="250" rx="3" ry="3" width="35" height="8" />
-          <rect x="5" y="270" rx="3" ry="3" width="115" height="15" />
-          <rect x="5" y="290" rx="3" ry="3" width="35" height="8" />
-          <rect x="45" y="290" rx="3" ry="3" width="35" height="8" />
-          <rect x="85" y="290" rx="3" ry="3" width="35" height="8" />
-        </ContentLoader>
+        <div
+          className="ssc-circle"
+          style={{ minWidth: "20rem", width: "20rem", height: "20rem" }}
+        ></div>
+        <div className="ssc-head-line"></div>
+        <div className="ssc-line" style={{ width: "60%" }}></div>
+        <div className="ssc-line"></div>
+        <div className="ssc-line"></div>
+        <div className="ssc-line"></div>
+        <div className="ssc-line"></div>
+        <div className="ssc-line"></div>
+        <div className="ssc-line"></div>
+        <div className="ssc-line"></div>
       </Wrapper>
     );
   }
