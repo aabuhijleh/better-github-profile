@@ -118,8 +118,8 @@ export const ProfileDetails: React.FC = () => {
 
   if (user) {
     return (
-      <Fade>
-        <Wrapper>
+      <Wrapper>
+        <Fade>
           <Avatar src={user.avatarUrl} alt="avatar" />
 
           <header>
@@ -194,8 +194,8 @@ export const ProfileDetails: React.FC = () => {
               </li>
             )}
           </DetailsWrapper>
-        </Wrapper>
-      </Fade>
+        </Fade>
+      </Wrapper>
     );
   }
 

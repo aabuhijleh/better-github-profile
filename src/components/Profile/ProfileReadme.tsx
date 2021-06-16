@@ -42,8 +42,8 @@ export const ProfileReadme: React.FC = () => {
     const content = data?.repository.object.text as string;
 
     return (
-      <Fade>
-        <Wrapper>
+      <Wrapper>
+        <Fade>
           <ReadmeRepo>
             <Link href={`https://github.com/${username}/${username}`}>
               {username}
@@ -51,8 +51,8 @@ export const ProfileReadme: React.FC = () => {
             <span>/</span>README<span>.md</span>
           </ReadmeRepo>
           <Markdown text={content} />
-        </Wrapper>
-      </Fade>
+        </Fade>
+      </Wrapper>
     );
   }
 
