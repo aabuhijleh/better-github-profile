@@ -18,6 +18,7 @@ import {
 } from "src/components/typography/Heading";
 import { Fade } from "react-awesome-reveal";
 import "skeleton-screen-css";
+import { useRainbow } from "src/hooks/useRainbow";
 
 const Wrapper = styled.div`
   display: grid;
@@ -102,10 +103,29 @@ const DetailsWrapper = styled.ul`
   }
 `;
 
+const StatusWrapper = styled.div`
+  padding: 1rem 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius);
+  font-size: var(--fz-md);
+  color: #fff;
+
+  & > .emoji {
+    margin-right: 1rem;
+  }
+
+  @media only screen and (max-width: 768px) {
+    max-width: 50%;
+  }
+`;
+
 export const ProfileDetails: React.FC = () => {
   const username = useStore((state) => state.username);
   const email = useStore((state) => state.email);
   const setEmail = useStore((state) => state.setEmail);
+  const colors = useRainbow();
 
   const { data, loading, error } = useUserQuery({
     variables: { username },
@@ -120,10 +140,38 @@ export const ProfileDetails: React.FC = () => {
   useDocumentTitle(user?.name);
 
   if (user) {
+    const colorKeys = Object.keys(colors);
+    const transitionDelay = 1000;
+
     return (
       <Wrapper>
         <Fade>
           <Avatar src={user.avatarUrl} alt="avatar" />
+
+          <StatusWrapper
+            style={{
+              ...colors,
+              transition: `
+                      ${colorKeys[0]} ${transitionDelay}ms linear,
+                      ${colorKeys[1]} ${transitionDelay}ms linear,
+                      ${colorKeys[2]} ${transitionDelay}ms linear
+                    `,
+              background: `
+                      radial-gradient(
+                        circle at top left,
+                        var(${colorKeys[2]}),
+                        var(${colorKeys[1]}),
+                        var(${colorKeys[0]})
+                      )
+                    `,
+            }}
+          >
+            <span
+              className="emoji"
+              dangerouslySetInnerHTML={{ __html: user.status?.emojiHTML }}
+            />
+            <span>{user.status?.message}</span>
+          </StatusWrapper>
 
           <header>
             <HeadingSecondary>{user.name}</HeadingSecondary>
