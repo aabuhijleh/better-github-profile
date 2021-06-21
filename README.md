@@ -84,10 +84,3 @@ $ npm run build
 ```
 
 You need to generate a [GitHub key](https://docs.github.com/en/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql) to use the GraphQL API. Add this key as an environment variable `REACT_APP_GITHUB_KEY` in a `.env` file that needs to be created at the project's root directory
-
-## Todos 📝
-
-- ~~Use GitHub GraphQL API instead of REST~~
-- ~~Use styled components~~
-- ~~Add more customization options~~
-- Make the website responsive
