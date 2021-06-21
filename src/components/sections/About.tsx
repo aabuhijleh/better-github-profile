@@ -9,7 +9,7 @@ import { useStore } from "src/store";
 import { parseExtendedData } from "src/utils/parseExtendedData";
 
 const Wrapper = styled.section`
-  padding: 10rem 0;
+  padding: var(--section-padding) 0;
   margin: 0 auto;
   max-width: 90rem;
 `;
@@ -21,6 +21,9 @@ const ContentWrapper = styled.div`
 
   @media only screen and (max-width: 768px) {
     display: block;
+    & > *:not(:last-child) {
+      margin-bottom: 5rem;
+    }
   }
 `;
 
@@ -28,6 +31,12 @@ const AboutImage = styled.img`
   width: 100%;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
+
+  @media only screen and (max-width: 768px) {
+    max-width: 50rem;
+    display: block;
+    margin: 0 auto;
+  }
 `;
 
 const TechnologiesList = styled.ul`

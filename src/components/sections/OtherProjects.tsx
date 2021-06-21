@@ -15,7 +15,7 @@ import { useStore } from "src/store";
 import { parseExtendedData } from "src/utils/parseExtendedData";
 
 const Wrapper = styled.section`
-  padding: 10rem 0;
+  padding: var(--section-padding) 0;
   margin: 0 auto;
   max-width: 100rem;
 

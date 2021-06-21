@@ -13,7 +13,7 @@ import { useExtendedDataQuery } from "src/generated/graphql";
 import { parseExtendedData } from "src/utils/parseExtendedData";
 
 const Wrapper = styled.section`
-  padding: 10rem 0;
+  padding: var(--section-padding) 0;
   margin: 0 auto;
   margin-bottom: 3rem;
   max-width: 70rem;

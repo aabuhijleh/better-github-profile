@@ -31,9 +31,15 @@ export const GlobalStyle = createGlobalStyle`
     --scrollbar-color: #4d4d4d;
     --shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.8);
     --content-padding: 5rem;
+    --section-padding: 10rem;
 
     @media only screen and (max-width: 768px) {
       --content-padding: 2.5rem;
+      --section-padding: 8rem;
+    }
+
+    @media only screen and (max-width: 500px) {
+      --section-padding: 6rem;
     }
   }
 
