@@ -145,6 +145,22 @@ export const GlobalStyle = createGlobalStyle`
       }
     `}
 
+    @media only screen and (max-width: 900px) {
+      .ssc-avatar {
+        min-width: 15rem !important;
+        width: 15rem !important;
+        height: 15rem !important;
+      }
+    }
+
+    @media only screen and (max-width: 768px) {
+      .ssc-avatar {
+        min-width: 10rem !important;
+        width: 10rem !important;
+        height: 10rem !important;
+      }
+    }
+
   // react toggle styling
     .mode-toggle.react-toggle--checked .react-toggle-track {
     background-color: var(--mode-toggle-color);

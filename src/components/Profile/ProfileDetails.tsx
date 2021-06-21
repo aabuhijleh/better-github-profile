@@ -262,7 +262,7 @@ export const ProfileDetails: React.FC = () => {
     return (
       <Wrapper>
         <div
-          className="ssc-circle"
+          className="ssc-circle ssc-avatar"
           style={{ minWidth: "20rem", width: "20rem", height: "20rem" }}
         ></div>
         <div className="ssc-head-line"></div>
