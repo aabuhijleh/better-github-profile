@@ -54,8 +54,8 @@ const CustomizationTools = styled.div`
   justify-content: center;
   align-items: center;
 
-  *:not(:last-child) {
-    margin-right: 1rem;
+  & > *:not(:last-child) {
+    margin-right: 1.5rem;
   }
 `;
 

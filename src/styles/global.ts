@@ -163,6 +163,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .mode-toggle .react-toggle-track-x {
-    right: 22px;
+    right: 12px;
   }
 `;

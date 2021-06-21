@@ -74,8 +74,8 @@ const CustomizationTools = styled.div`
   align-items: center;
   padding-left: 1.5rem;
 
-  *:not(:last-child) {
-    margin-right: 1rem;
+  & > *:not(:last-child) {
+    margin-right: 1.5rem;
   }
 `;
 
