@@ -18,6 +18,10 @@ const ContentWrapper = styled.div`
   display: grid;
   grid-template-columns: 3fr 2fr;
   grid-gap: 5rem;
+
+  @media only screen and (max-width: 768px) {
+    display: block;
+  }
 `;
 
 const AboutImage = styled.img`

@@ -30,6 +30,11 @@ export const GlobalStyle = createGlobalStyle`
     --mode-toggle-color: #4d4d4d;
     --scrollbar-color: #4d4d4d;
     --shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.8);
+    --content-padding: 5rem;
+
+    @media only screen and (max-width: 768px) {
+      --content-padding: 2.5rem;
+    }
   }
 
   * {
@@ -46,6 +51,28 @@ export const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
     font-size: 62.5%;
+
+    @media only screen and (max-width: 500px) {
+      font-size: 50%;
+    }
+
+    @media only screen and (max-width: 400px) {
+      font-size: 40%;
+    }
+
+    *::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-color);
+      border: 3px solid ${bodyBgColor};
+      border-radius: 10px;
+    }
+
+    *::-webkit-scrollbar-track {
+      background: ${bodyBgColor};
+    }
   }
 
   body {
@@ -58,18 +85,15 @@ export const GlobalStyle = createGlobalStyle`
     color: ${textColor};
     background-color: ${bodyBgColor};
 
-    &::-webkit-scrollbar {
-      width: 12px;
-    }
+    &.blur {
+      overflow: hidden;
 
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--scrollbar-color);
-      border: 3px solid ${bodyBgColor};
-      border-radius: 10px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: ${bodyBgColor};
+      & #content > * {
+        filter: blur(5px) brightness(0.7);
+        transition: var(--transition);
+        pointer-events: none;
+        user-select: none;
+      }
     }
   }
 
@@ -114,4 +138,25 @@ export const GlobalStyle = createGlobalStyle`
         );
       }
     `}
+
+  // react toggle styling
+    .mode-toggle.react-toggle--checked .react-toggle-track {
+    background-color: var(--mode-toggle-color);
+  }
+
+  .mode-toggle.react-toggle--checked:hover .react-toggle-track {
+    background-color: var(--mode-toggle-color);
+  }
+
+  .mode-toggle.react-toggle:hover .react-toggle-track {
+    background-color: var(--mode-toggle-color);
+  }
+
+  .mode-toggle .react-toggle-track-check {
+    left: 6px;
+  }
+
+  .mode-toggle .react-toggle-track-x {
+    right: 22px;
+  }
 `;

@@ -5,21 +5,35 @@ import { Logo } from "src/components/misc/Logo";
 import { Link } from "src/components/ui/Link";
 import { ModeToggle } from "src/components/layout/Navbar/ModeToggle";
 import { SoundToggle } from "src/components/layout/Navbar/SoundToggle";
+import { Sidebar } from "src/components/layout/Navbar/Sidebar";
 import { Button } from "src/components/ui/Button";
 import { useExtendedDataQuery } from "src/generated/graphql";
 import { useStore } from "src/store";
 import { parseExtendedData } from "src/utils/parseExtendedData";
+import { BiMenuAltRight } from "react-icons/bi";
 
 const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
-  padding: 0 5rem;
   font-size: var(--fz-md);
+  height: var(--nav-height);
+  padding: 0 var(--content-padding);
 
   .home {
     margin-right: auto;
+  }
+`;
+
+const NavBody = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  font-size: var(--fz-md);
+
+  @media only screen and (max-width: 1000px) {
+    display: none;
   }
 `;
 
@@ -55,14 +69,27 @@ const ResumeButton = styled(Button)`
 `;
 
 const CustomizationTools = styled.div`
-  width: 10rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  padding-left: 1.5rem;
+
+  *:not(:last-child) {
+    margin-right: 1rem;
+  }
+`;
+
+const MenuWrapper = styled.div`
+  font-size: var(--nav-logo-size);
+
+  @media only screen and (min-width: 1000px) {
+    display: none;
+  }
 `;
 
 export const Navbar: React.FC = () => {
   const username = useStore((state) => state.username);
+  const setSidebarShown = useStore((state) => state.setSidebarShown);
   const { data } = useExtendedDataQuery({
     variables: { username },
   });
@@ -80,25 +107,33 @@ export const Navbar: React.FC = () => {
       <a className="home" href="/">
         <Logo size="var(--nav-logo-size)" />
       </a>
-      <NavList>
-        <li>
-          <Link href="#about">About</Link>
-        </li>
-        <li>
-          <Link href="#jobs">Experience</Link>
-        </li>
-        <li>
-          <Link href="#projects">Work</Link>
-        </li>
-        <li>
-          <Link href="#contact">Contact</Link>
-        </li>
-      </NavList>
-      <ResumeButton href={resume}>Resume</ResumeButton>
-      <CustomizationTools>
-        <SoundToggle />
-        <ModeToggle />
-      </CustomizationTools>
+      <NavBody>
+        <NavList>
+          <li>
+            <Link href="#about">About</Link>
+          </li>
+          <li>
+            <Link href="#jobs">Experience</Link>
+          </li>
+          <li>
+            <Link href="#projects">Work</Link>
+          </li>
+          <li>
+            <Link href="#contact">Contact</Link>
+          </li>
+        </NavList>
+        <ResumeButton href={resume}>Resume</ResumeButton>
+        <CustomizationTools>
+          <SoundToggle />
+          <ModeToggle />
+        </CustomizationTools>
+      </NavBody>
+
+      <MenuWrapper onClick={() => setSidebarShown(true)}>
+        <BiMenuAltRight />
+      </MenuWrapper>
+
+      <Sidebar />
     </Nav>
   );
 };

@@ -8,15 +8,14 @@ import useSound from "use-sound";
 import { shakeAnimation } from "src/styles/animations";
 
 const Wrapper = styled.button`
-  height: 2.4rem;
-  font-size: 2rem;
+  font-size: 20px;
   line-height: 1;
   cursor: pointer;
   border: none;
   background-color: transparent;
   color: currentColor;
-  padding: 0 1rem;
   transition: var(--transition);
+  user-select: none;
 
   &:hover {
     filter: brightness(90%);

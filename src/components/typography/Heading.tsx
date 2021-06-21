@@ -54,7 +54,8 @@ export const SectionHeading = styled.h1`
     content: "";
     display: block;
     position: relative;
-    width: 35rem;
+    width: 40%;
+    max-width: 35rem;
     height: 1px;
     margin-left: 2rem;
     background-color: ${borderColor};

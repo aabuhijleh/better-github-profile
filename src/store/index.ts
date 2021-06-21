@@ -9,6 +9,8 @@ interface State {
   setUsername: (to: string) => void;
   email: string;
   setEmail: (to: string) => void;
+  sidebarShown: boolean;
+  setSidebarShown: (to: boolean) => void;
 }
 
 interface PersistentState {
@@ -23,6 +25,8 @@ export const useStore = create<State>((set) => ({
   setUsername: (to) => set({ username: to }),
   email: "",
   setEmail: (to) => set({ email: to }),
+  sidebarShown: false,
+  setSidebarShown: (to) => set({ sidebarShown: to }),
 }));
 
 export const usePersistentStore = create<PersistentState>(

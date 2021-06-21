@@ -24,6 +24,10 @@ const ProjectsList = styled.ul`
     grid-template-columns: repeat(12, 1fr);
     align-items: center;
 
+    @media only screen and (max-width: 768px) {
+      display: block;
+    }
+
     &:not(:last-of-type) {
       margin-bottom: 10rem;
     }

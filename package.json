@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.3.20",
+    "@react-hook/media-query": "^1.1.1",
     "graphql": "^15.5.0",
     "graphql-tag": "^2.12.4",
     "parse-link-header": "^1.0.1",

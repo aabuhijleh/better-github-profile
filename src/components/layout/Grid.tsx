@@ -1,19 +1,20 @@
 import styled from "styled-components/macro";
 
-export const Grid = styled.div`
+export const Content = styled.main`
   display: grid;
 
-  grid-template-rows: var(--nav-height);
   grid-template-columns:
-    [full-start] 1fr [content-start] minmax(min-content, 120rem)
-    [content-end] 1fr [full-end];
+    [full-start] 1fr 5rem [content-start] minmax(min-content, 120rem)
+    [content-end] 1fr 5rem [full-end];
+
+  @media only screen and (max-width: 768px) {
+    grid-template-columns:
+      [full-start] 1fr 2.5rem [content-start] minmax(min-content, 120rem)
+      [content-end] 1fr 2.5rem [full-end];
+  }
 
   & > * {
     grid-column: content-start / content-end;
-  }
-
-  & > nav {
-    grid-column: full-start / full-end;
   }
 
   counter-reset: section 0;

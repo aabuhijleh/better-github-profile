@@ -59,6 +59,10 @@ const Wrapper = styled.div`
     margin-top: 0;
     margin-bottom: 1.6rem;
   }
+
+  img {
+    max-width: 100%;
+  }
 `;
 
 export const Markdown: React.FC<MarkdownProps> = ({ text }) => {
