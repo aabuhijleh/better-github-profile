@@ -37,6 +37,10 @@ const AboutImage = styled.img`
     display: block;
     margin: 0 auto;
   }
+
+  @media only screen and (max-width: 500px) {
+    max-width: 30rem;
+  }
 `;
 
 const TechnologiesList = styled.ul`
