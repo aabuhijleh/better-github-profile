@@ -17,3 +17,12 @@ export const shakeAnimation = keyframes`
     transform: rotate(0);
   }
 `;
+
+export const fadeInAnimation = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;

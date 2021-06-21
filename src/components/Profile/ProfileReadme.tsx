@@ -4,15 +4,23 @@ import { Markdown } from "src/components/misc/Markdown";
 import { Warning } from "src/components/typography/Warning";
 import { useReadmeQuery } from "src/generated/graphql";
 import { useStore } from "src/store";
-import styled from "styled-components/macro";
+import styled, { css } from "styled-components/macro";
 import { borderColor, textSecondayColor } from "src/styles/theme";
-import { Fade } from "react-awesome-reveal";
+import { fadeInAnimation } from "src/styles/animations";
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ fade?: boolean }>`
   padding: 2.4rem;
   border: 1px solid ${borderColor};
   border-radius: var(--border-radius);
   min-height: 75vh;
+
+  ${(p) =>
+    p.fade &&
+    css`
+      & > * {
+        animation: ${fadeInAnimation} 0.6s linear;
+      }
+    `}
 `;
 
 const ReadmeRepo = styled.div`
@@ -42,16 +50,14 @@ export const ProfileReadme: React.FC = () => {
     const content = data?.repository.object.text as string;
 
     return (
-      <Wrapper>
-        <Fade>
-          <ReadmeRepo>
-            <Link href={`https://github.com/${username}/${username}`}>
-              {username}
-            </Link>
-            <span>/</span>README<span>.md</span>
-          </ReadmeRepo>
-          <Markdown text={content} />
-        </Fade>
+      <Wrapper fade>
+        <ReadmeRepo>
+          <Link href={`https://github.com/${username}/${username}`}>
+            {username}
+          </Link>
+          <span>/</span>README<span>.md</span>
+        </ReadmeRepo>
+        <Markdown text={content} />
       </Wrapper>
     );
   }

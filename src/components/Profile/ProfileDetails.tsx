@@ -4,7 +4,7 @@ import { useUserQuery } from "src/generated/graphql";
 import { useDocumentTitle } from "src/hooks/useDocumentTitle";
 import { useStore } from "src/store";
 import { borderColor, textSecondayColor } from "src/styles/theme";
-import styled from "styled-components/macro";
+import styled, { css } from "styled-components/macro";
 import { FiUsers, FiStar, FiMail, FiGithub } from "react-icons/fi";
 import { BiBuildings } from "react-icons/bi";
 import { GoLocation } from "react-icons/go";
@@ -16,15 +16,23 @@ import {
   HeadingSecondary,
   HeadingTertiary,
 } from "src/components/typography/Heading";
-import { Fade } from "react-awesome-reveal";
 import "skeleton-screen-css";
 import { useRainbow } from "src/hooks/useRainbow";
+import { fadeInAnimation } from "src/styles/animations";
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ fade?: boolean }>`
   display: grid;
   align-self: flex-start;
   grid-gap: 1rem;
   font-size: var(--fz-sm);
+
+  ${(p) =>
+    p.fade &&
+    css`
+      & > * {
+        animation: ${fadeInAnimation} 0.6s linear;
+      }
+    `}
 `;
 
 const Avatar = styled.img`
@@ -144,10 +152,10 @@ export const ProfileDetails: React.FC = () => {
     const transitionDelay = 1000;
 
     return (
-      <Wrapper>
-        <Fade>
-          <Avatar src={user.avatarUrl} alt="avatar" />
+      <Wrapper fade>
+        <Avatar src={user.avatarUrl} alt="avatar" />
 
+        {user.status && (
           <StatusWrapper
             style={{
               ...colors,
@@ -172,80 +180,80 @@ export const ProfileDetails: React.FC = () => {
             />
             <span>{user.status?.message}</span>
           </StatusWrapper>
+        )}
 
-          <header>
-            <HeadingSecondary>{user.name}</HeadingSecondary>
-            <LoginSubtitle>
-              <LinkUnderline href={user.url}>
-                <FiGithub className="github-icon" />
-                {user.login}
+        <header>
+          <HeadingSecondary>{user.name}</HeadingSecondary>
+          <LoginSubtitle>
+            <LinkUnderline href={user.url}>
+              <FiGithub className="github-icon" />
+              {user.login}
+            </LinkUnderline>
+          </LoginSubtitle>
+        </header>
+
+        <Bio dangerouslySetInnerHTML={{ __html: user.bioHTML }} />
+
+        <LinksWrapper>
+          <li>
+            <FiUsers />
+            <DetailsLink href={`${user.url}?tab=followers`}>
+              <span>{user.followers.totalCount}</span> followers
+            </DetailsLink>
+          </li>
+          <li>
+            <DetailsLink href={`${user.url}?tab=following`}>
+              <span>{user.following.totalCount}</span> following
+            </DetailsLink>
+          </li>
+          <li>
+            <FiStar />
+            <DetailsLink href={`${user.url}?tab=stars`}>
+              <span>{user.starredRepositories.totalCount}</span>
+            </DetailsLink>
+          </li>
+        </LinksWrapper>
+
+        <DetailsWrapper>
+          {user.company && (
+            <li>
+              <BiBuildings />
+              {user.company}
+            </li>
+          )}
+          {user.location && (
+            <li>
+              <GoLocation />
+              {user.location}
+            </li>
+          )}
+          {user.email && (
+            <li>
+              <FiMail />
+              <LinkUnderline href={`mailto:${user.email}`}>
+                {user.email}
               </LinkUnderline>
-            </LoginSubtitle>
-          </header>
-
-          <Bio dangerouslySetInnerHTML={{ __html: user.bioHTML }} />
-
-          <LinksWrapper>
-            <li>
-              <FiUsers />
-              <DetailsLink href={`${user.url}?tab=followers`}>
-                <span>{user.followers.totalCount}</span> followers
-              </DetailsLink>
             </li>
+          )}
+          {user.websiteUrl && (
             <li>
-              <DetailsLink href={`${user.url}?tab=following`}>
-                <span>{user.following.totalCount}</span> following
-              </DetailsLink>
+              <BsLink45Deg />
+              <LinkUnderline href={assignUrlPrefix(user.websiteUrl)}>
+                {user.websiteUrl}
+              </LinkUnderline>
             </li>
+          )}
+          {user.twitterUsername && (
             <li>
-              <FiStar />
-              <DetailsLink href={`${user.url}?tab=stars`}>
-                <span>{user.starredRepositories.totalCount}</span>
-              </DetailsLink>
+              <FaTwitter />
+              <LinkUnderline
+                href={`https://twitter.com/${user.twitterUsername}`}
+              >
+                @{user.twitterUsername}
+              </LinkUnderline>
             </li>
-          </LinksWrapper>
-
-          <DetailsWrapper>
-            {user.company && (
-              <li>
-                <BiBuildings />
-                {user.company}
-              </li>
-            )}
-            {user.location && (
-              <li>
-                <GoLocation />
-                {user.location}
-              </li>
-            )}
-            {user.email && (
-              <li>
-                <FiMail />
-                <LinkUnderline href={`mailto:${user.email}`}>
-                  {user.email}
-                </LinkUnderline>
-              </li>
-            )}
-            {user.websiteUrl && (
-              <li>
-                <BsLink45Deg />
-                <LinkUnderline href={assignUrlPrefix(user.websiteUrl)}>
-                  {user.websiteUrl}
-                </LinkUnderline>
-              </li>
-            )}
-            {user.twitterUsername && (
-              <li>
-                <FaTwitter />
-                <LinkUnderline
-                  href={`https://twitter.com/${user.twitterUsername}`}
-                >
-                  @{user.twitterUsername}
-                </LinkUnderline>
-              </li>
-            )}
-          </DetailsWrapper>
-        </Fade>
+          )}
+        </DetailsWrapper>
       </Wrapper>
     );
   }
