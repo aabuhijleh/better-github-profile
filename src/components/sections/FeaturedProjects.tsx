@@ -24,36 +24,54 @@ const ProjectsList = styled.ul`
     grid-template-columns: repeat(12, 1fr);
     align-items: center;
 
-    @media only screen and (max-width: 768px) {
-      display: block;
-    }
-
     &:not(:last-of-type) {
-      margin-bottom: 10rem;
+      margin-bottom: var(--section-padding);
     }
 
-    &:nth-of-type(2n) {
-      .project-content {
-        grid-column: 7 / -1;
-        text-align: right;
-      }
-
+    @media only screen and (max-width: 768px) {
+      .project-content,
       .project-image {
-        grid-column: 1 / 8;
+        grid-column: 1 / -1;
       }
 
-      .project-tech-list {
-        justify-content: flex-end;
+      .project-content {
+        z-index: 5;
+        padding: 4rem;
 
-        li {
-          margin: 0px 0px 5px 2rem;
+        .project-title {
+          color: ${linkBlueColor};
         }
       }
 
-      .project-links {
-        a {
-          margin-left: 1rem;
-          margin-right: 0;
+      .project-image {
+        opacity: 0.3;
+      }
+    }
+
+    @media only screen and (min-width: 768px) {
+      &:nth-of-type(2n) {
+        .project-content {
+          grid-column: 7 / -1;
+          text-align: right;
+        }
+
+        .project-image {
+          grid-column: 1 / 8;
+        }
+
+        .project-tech-list {
+          justify-content: flex-end;
+
+          li {
+            margin: 0px 0px 5px 2rem;
+          }
+        }
+
+        .project-links {
+          a {
+            margin-left: 1rem;
+            margin-right: 0;
+          }
         }
       }
     }
@@ -106,6 +124,9 @@ const ProjectTechList = styled.ul`
 `;
 
 const ProjectLinks = styled.div`
+  position: relative;
+  z-index: 2;
+
   & a {
     display: flex;
     justify-content: center;
@@ -126,12 +147,20 @@ const ProjectImage = styled.div`
   grid-area: 1 / 6 / -1 / -1;
   position: relative;
   z-index: 1;
-  transition: var(--transition);
+  background-color: ${linkBlueColor};
+  border-radius: var(--border-radius);
 
   & img {
+    display: block;
     width: 100%;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
+    transition: var(--transition);
+    opacity: 0.9;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 `;
 
@@ -156,7 +185,9 @@ export const FeaturedProjects: React.FC = () => {
               <li key={idx}>
                 <ProjectContent className="project-content">
                   <ProjectOverline>Featured Project</ProjectOverline>
-                  <ProjectTitle>{project.name}</ProjectTitle>
+                  <ProjectTitle className="project-title">
+                    {project.name}
+                  </ProjectTitle>
                   <ProjectDescription>{project.description}</ProjectDescription>
                   <ProjectTechList className="project-tech-list">
                     {project.technologies.map((technology, idx) => (
@@ -178,7 +209,9 @@ export const FeaturedProjects: React.FC = () => {
                 </ProjectContent>
 
                 <ProjectImage className="project-image">
-                  <img src={project.imageUrl} alt={project.name} />
+                  <a href={project.externalUrl}>
+                    <img src={project.imageUrl} alt={project.name} />
+                  </a>
                 </ProjectImage>
               </li>
             ))}
