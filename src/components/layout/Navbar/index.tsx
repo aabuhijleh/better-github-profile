@@ -133,7 +133,7 @@ export const Navbar: React.FC = () => {
         <BiMenuAltRight />
       </MenuWrapper>
 
-      <Sidebar />
+      <Sidebar resume={resume} />
     </Nav>
   );
 };

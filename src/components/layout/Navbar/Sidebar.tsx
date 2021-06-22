@@ -96,7 +96,7 @@ const ResumeButton = styled(Button)`
   }
 `;
 
-export const Sidebar: React.FC = () => {
+export const Sidebar: React.FC<{ resume: string }> = ({ resume }) => {
   const sidebarShown = useStore((state) => state.sidebarShown);
   const setSidebarShown = useStore((state) => state.setSidebarShown);
   const matchesHideMeduaQuery = useMediaQuery(
@@ -137,7 +137,7 @@ export const Sidebar: React.FC = () => {
         </li>
       </NavList>
 
-      <ResumeButton href={"#"}>Resume</ResumeButton>
+      <ResumeButton href={resume}>Resume</ResumeButton>
     </SidebarWrapper>
   );
 };
