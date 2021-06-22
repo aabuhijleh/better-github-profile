@@ -148,7 +148,7 @@ const ProjectImage = styled.div`
   position: relative;
   z-index: 1;
   background-color: ${linkBlueColor};
-  border-radius: var(--border-radius);
+  border-radius: calc(var(--border-radius) + 1px);
 
   & img {
     display: block;
