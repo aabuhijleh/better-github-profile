@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { LinkSecondary, LinkUnderline } from "src/components/ui/Link";
 import { useUserQuery } from "src/generated/graphql";
 import { useDocumentTitle } from "src/hooks/useDocumentTitle";
@@ -131,8 +131,8 @@ const StatusWrapper = styled.div`
 
 export const ProfileDetails: React.FC = () => {
   const username = useStore((state) => state.username);
-  const email = useStore((state) => state.email);
   const setEmail = useStore((state) => state.setEmail);
+  const [avatarLoaded, setAvatarLoaded] = useState(false);
   const colors = useRainbow();
 
   const { data, loading, error } = useUserQuery({
@@ -143,11 +143,15 @@ export const ProfileDetails: React.FC = () => {
 
   useEffect(() => {
     setEmail(user?.email || "");
-  }, [user?.email, email, setEmail]);
+  }, [user?.email, setEmail]);
+
+  useEffect(() => {
+    if (loading) setAvatarLoaded(false);
+  }, [loading]);
 
   useDocumentTitle(user?.name);
 
-  if (user) {
+  if (user && avatarLoaded) {
     const colorKeys = Object.keys(colors);
     const transitionDelay = 1000;
 
@@ -258,9 +262,17 @@ export const ProfileDetails: React.FC = () => {
     );
   }
 
-  if (loading) {
+  if (loading || !avatarLoaded) {
     return (
       <Wrapper>
+        {user && (
+          <Avatar
+            src={user.avatarUrl}
+            alt="avatar"
+            style={{ display: "none" }}
+            onLoad={() => setAvatarLoaded(true)}
+          />
+        )}
         <div
           className="ssc-circle ssc-avatar"
           style={{ minWidth: "20rem", width: "20rem", height: "20rem" }}
