@@ -160,25 +160,4 @@ export const GlobalStyle = createGlobalStyle`
         height: 10rem !important;
       }
     }
-
-  // react toggle styling
-    .mode-toggle.react-toggle--checked .react-toggle-track {
-    background-color: var(--mode-toggle-color);
-  }
-
-  .mode-toggle.react-toggle--checked:hover .react-toggle-track {
-    background-color: var(--mode-toggle-color);
-  }
-
-  .mode-toggle.react-toggle:hover .react-toggle-track {
-    background-color: var(--mode-toggle-color);
-  }
-
-  .mode-toggle .react-toggle-track-check {
-    left: 6px;
-  }
-
-  .mode-toggle .react-toggle-track-x {
-    right: 12px;
-  }
 `;

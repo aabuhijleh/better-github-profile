@@ -6,21 +6,7 @@ import enableSoundSfx from "src/assets/sounds/enable-sound.mp3";
 import disableSoundSfx from "src/assets/sounds/disable-sound.mp3";
 import useSound from "use-sound";
 import { shakeAnimation } from "src/styles/animations";
-
-const Wrapper = styled.button`
-  font-size: 20px;
-  line-height: 1;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  color: currentColor;
-  transition: var(--transition);
-  user-select: none;
-
-  &:hover {
-    filter: brightness(90%);
-  }
-`;
+import { ToggleWrapper } from "src/components/layout/Navbar/ToggleWrapper";
 
 const AnimatedIcon = styled.div<{ enableAnimation: boolean }>`
   ${(props) =>
@@ -49,7 +35,7 @@ export const SoundToggle: React.FC = () => {
   };
 
   return (
-    <Wrapper onClick={toggleSound}>
+    <ToggleWrapper onClick={toggleSound}>
       {soundEnabled ? (
         <AnimatedIcon enableAnimation={enableAnimation}>
           <FiVolume2 />
@@ -57,6 +43,6 @@ export const SoundToggle: React.FC = () => {
       ) : (
         <FiVolume />
       )}
-    </Wrapper>
+    </ToggleWrapper>
   );
 };
