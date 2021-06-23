@@ -5,7 +5,7 @@
 [Demo page](https://www.aabuhijleh.com/)
 
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/42934634/121816709-d0c1a380-cc85-11eb-9772-877c8fdb36a9.png" alt="example" />
+    <img src="https://user-images.githubusercontent.com/42934634/122873598-a1bcc900-d33a-11eb-91ce-794b213363ab.png" alt="example" />
 </p>
 
 ## How it works? 🙋‍♀️
