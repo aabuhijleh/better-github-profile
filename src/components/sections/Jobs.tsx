@@ -48,19 +48,16 @@ const AccomplishmentList = styled.ul`
 
   & > li {
     &:not(:last-child) {
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
     display: flex;
-    line-height: 1;
   }
 
   & > li::before {
     margin-right: 2rem;
-    margin-top: 5px;
     content: "▹";
     color: ${linkBlueColor};
     font-size: 1.8rem;
-    line-height: 1.2rem;
   }
 `;
 
