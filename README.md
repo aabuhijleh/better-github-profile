@@ -79,6 +79,9 @@ $ npm install
 # run the app in development
 $ npm start
 
+# generate GraphQL code
+$ npm run gen
+
 # build the app for production
 $ npm run build
 ```
