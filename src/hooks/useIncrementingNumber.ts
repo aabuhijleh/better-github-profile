@@ -7,9 +7,9 @@ export const useIncrementingNumber = (delay: number) => {
 
   // Set up the interval.
   React.useEffect(() => {
-    function tick() {
+    const tick = () => {
       savedCallback.current();
-    }
+    };
     if (delay !== null) {
       let id = setInterval(tick, delay);
       return () => clearInterval(id);
