@@ -48,8 +48,7 @@ export const useRainbow = (options = { intervalDelay: 1000 }) => {
       return;
     }
 
-    // eslint-disable-next-line array-callback-return
-    range(0, WINDOW_SIZE).map((index) => {
+    range(0, WINDOW_SIZE).forEach((index) => {
       const name = getColorPropName(uniqueId, index);
       const initialValue = rainbowColors[index];
 
@@ -60,9 +59,7 @@ export const useRainbow = (options = { intervalDelay: 1000 }) => {
           syntax: "<color>",
           inherits: false,
         });
-      } catch (err) {
-        // console.error("failed to register CSS property");
-      }
+      } catch (err) {}
     });
   }, [isEnabled, uniqueId]);
 

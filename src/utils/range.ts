@@ -1,8 +1,7 @@
-/* eslint-disable eqeqeq */
-export const range = (start: any, end: any, step?: any) => {
-  var range = [];
-  var typeofStart = typeof start;
-  var typeofEnd = typeof end;
+export const range = (start: any, end: any, step?: number) => {
+  let range = [];
+  let typeofStart = typeof start;
+  let typeofEnd = typeof end;
 
   if (step === 0) {
     throw TypeError("Step cannot be zero.");
@@ -15,9 +14,9 @@ export const range = (start: any, end: any, step?: any) => {
     typeofEnd = typeof end;
   }
 
-  if (typeofStart == "undefined" || typeofEnd == "undefined") {
+  if (typeofStart === "undefined" || typeofEnd === "undefined") {
     throw TypeError("Must pass start and end arguments.");
-  } else if (typeofStart != typeofEnd) {
+  } else if (typeofStart !== typeofEnd) {
     throw TypeError("Start and end arguments must be of same type.");
   }
 
@@ -27,13 +26,13 @@ export const range = (start: any, end: any, step?: any) => {
     step = -step;
   }
 
-  if (typeofStart == "number") {
+  if (typeofStart === "number") {
     while (step > 0 ? end >= start : end <= start) {
       range.push(start);
       start += step;
     }
-  } else if (typeofStart == "string") {
-    if (start.length != 1 || end.length != 1) {
+  } else if (typeofStart === "string") {
+    if (start.length !== 1 || end.length !== 1) {
       throw TypeError("Only strings with one character are supported.");
     }
 

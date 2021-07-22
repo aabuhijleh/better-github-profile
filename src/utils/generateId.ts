@@ -1,4 +1,4 @@
-const sample = (arr: any[], len = 1) => {
+const sample = (arr: string[], len = 1) => {
   let output = [];
 
   for (let i = 0; i < len; i++) {
