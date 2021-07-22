@@ -10,7 +10,7 @@
 
 ## How it works? 🙋‍♀️
 
-The content of this website is generated dynamically using the [GitHub GraphQL API](https://docs.github.com/en/graphql) which is used to download your [profile README.md](https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/managing-your-profile-readme) and other profile data such as your company, email, twitter username...etc
+The content of this website is generated dynamically using the [GitHub GraphQL API](https://docs.github.com/en/graphql) which is used to download your [profile README.md](https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/managing-your-profile-readme) and your [user data](https://docs.github.com/en/graphql/reference/objects#user)
 
 An extra file `extend.json` is required to be in your profile readme repository
 
