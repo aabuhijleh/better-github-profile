@@ -64,7 +64,7 @@ By default, the app uses the profile of the username set in `src/constants/defau
 
 To use a different profile, you can use this URL parameter
 
-```
+```plaintext
 /?username={username}
 ```
 

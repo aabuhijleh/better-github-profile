@@ -15,13 +15,17 @@ query User($username: String!) {
     followers(first: 1) {
       totalCount
     }
-    starredRepositories(first: 1) {
-      totalCount
-    }
     company
     location
     email
     websiteUrl
+    socialAccounts(first: 1) {
+      nodes {
+        displayName
+        provider
+        url
+      }
+    }
     twitterUsername
   }
 }

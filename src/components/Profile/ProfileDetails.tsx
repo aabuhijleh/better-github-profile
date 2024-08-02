@@ -5,10 +5,10 @@ import { useDocumentTitle } from "src/hooks/useDocumentTitle";
 import { useStore } from "src/store";
 import { borderColor, textSecondayColor } from "src/styles/theme";
 import styled, { css } from "styled-components/macro";
-import { FiUsers, FiStar, FiMail, FiGithub } from "react-icons/fi";
+import { FiUsers, FiMail, FiGithub } from "react-icons/fi";
 import { BiBuildings } from "react-icons/bi";
 import { GoLocation } from "react-icons/go";
-import { FaTwitter } from "react-icons/fa";
+import { FaLinkedin, FaTwitter } from "react-icons/fa";
 import { BsLink45Deg } from "react-icons/bs";
 import { assignUrlPrefix } from "src/utils/assignUrlPrefix";
 import { Warning } from "src/components/typography/Warning";
@@ -154,6 +154,9 @@ export const ProfileDetails: React.FC = () => {
   if (user && avatarLoaded) {
     const colorKeys = Object.keys(colors);
     const transitionDelay = 1000;
+    const linkedIn = user.socialAccounts?.nodes?.find(
+      (n) => n?.provider === "LINKEDIN"
+    );
 
     return (
       <Wrapper fade>
@@ -210,12 +213,6 @@ export const ProfileDetails: React.FC = () => {
               <span>{user.following.totalCount}</span> following
             </DetailsLink>
           </li>
-          <li>
-            <FiStar />
-            <DetailsLink href={`${user.url}?tab=stars`}>
-              <span>{user.starredRepositories.totalCount}</span>
-            </DetailsLink>
-          </li>
         </LinksWrapper>
 
         <DetailsWrapper>
@@ -244,6 +241,14 @@ export const ProfileDetails: React.FC = () => {
               <BsLink45Deg />
               <LinkUnderline href={assignUrlPrefix(user.websiteUrl)}>
                 {user.websiteUrl}
+              </LinkUnderline>
+            </li>
+          )}
+          {linkedIn && (
+            <li>
+              <FaLinkedin />
+              <LinkUnderline href={linkedIn.url}>
+                {linkedIn.displayName}
               </LinkUnderline>
             </li>
           )}
