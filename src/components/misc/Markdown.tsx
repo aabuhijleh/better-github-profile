@@ -63,6 +63,10 @@ const Wrapper = styled.div`
   img {
     max-width: 100%;
   }
+
+  pre {
+    white-space: pre-wrap;
+  }
 `;
 
 export const Markdown: React.FC<MarkdownProps> = ({ text }) => {
