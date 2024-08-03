@@ -5,4 +5,5 @@ export const defaults: DefaultValues = {
   mode: "dark",
   soundEnabled: true,
   documentTitle: "",
+  showWebsiteUrl: false,
 };

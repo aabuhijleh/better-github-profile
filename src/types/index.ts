@@ -5,6 +5,7 @@ export interface DefaultValues {
   mode: Mode;
   soundEnabled: boolean;
   documentTitle: string;
+  showWebsiteUrl: boolean;
 }
 
 export interface ExtendedData {

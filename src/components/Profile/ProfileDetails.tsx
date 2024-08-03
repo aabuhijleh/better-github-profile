@@ -19,6 +19,7 @@ import {
 import "skeleton-screen-css";
 import { useRainbow } from "src/hooks/useRainbow";
 import { fadeInAnimation } from "src/styles/animations";
+import { defaults } from "src/constants/defaults";
 
 const Wrapper = styled.div<{ fade?: boolean }>`
   display: grid;
@@ -236,7 +237,7 @@ export const ProfileDetails: React.FC = () => {
               </LinkUnderline>
             </li>
           )}
-          {user.websiteUrl && (
+          {defaults.showWebsiteUrl && user.websiteUrl && (
             <li>
               <BsLink45Deg />
               <LinkUnderline href={assignUrlPrefix(user.websiteUrl)}>
