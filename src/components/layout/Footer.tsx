@@ -28,7 +28,7 @@ export const Footer: React.FC = () => {
       </div>
       <div>
         By&nbsp;
-        <Link href="https://github.com/aabuhijleh">Abdurrahman Abu-Hijleh</Link>
+        <Link href="https://github.com/aabuhijleh">Abed Abu-Hijleh</Link>
       </div>
     </StyledFooter>
   );
